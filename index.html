@@ -923,15 +923,13 @@ function startQuiz(stageId){
 }
 
 function startExam(){
-  // Collect all unlocked questions
+  // Collect questions from ALL stages for exam
   const allQuestions=[];
   STAGES.forEach(stage=>{
-    if(stage.unlocked&&QUESTIONS[stage.id]){
+    if(QUESTIONS[stage.id]){
       allQuestions.push(...QUESTIONS[stage.id]);
     }
   });
-  
-  if(allQuestions.length<20) return alert('더 많은 스테이지를 클리어해주세요!');
   
   quiz={
     questions:shuffle(allQuestions).slice(0,20),
