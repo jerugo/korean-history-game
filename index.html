@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>🏯 한국사 타임어드벤처 2.0</title>
+<title>🏯 한국사 타임어드벤처 v2.1</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--primary:#FF6B6B;--secondary:#4ECDC4;--accent:#FFE66D;--bg:#FFF8F0;--card:#FFFFFF;--text:#2D3436;--correct:#00B894;--wrong:#E17055;--star:#FDCB6E;--lock:#B2BEC3;--shadow:0 4px 15px rgba(0,0,0,0.1);--gradient:linear-gradient(135deg,#667eea 0%,#764ba2 100%)}
@@ -284,7 +284,7 @@ h2{font-size:1.4rem;text-align:center;margin-bottom:12px}
 <!-- QUIZ SCREEN -->
 <div id="quiz-screen" class="screen">
   <div class="quiz-header">
-    <span class="quiz-progress" id="quiz-progress">1 / 25</span>
+    <span class="quiz-progress" id="quiz-progress">1 / 12</span>
     <span class="quiz-timer" id="quiz-timer">⏱ 15</span>
   </div>
   <div class="combo-counter" id="combo-counter">🔥 콤보 x3</div>
@@ -315,7 +315,7 @@ h2{font-size:1.4rem;text-align:center;margin-bottom:12px}
     <h2>📚 인물 도감</h2>
     <div style="width:60px"></div>
   </div>
-  <p style="font-size:.9rem;color:#636e72;text-align:center" id="collection-count">0 / 50 수집</p>
+  <p style="font-size:.9rem;color:#636e72;text-align:center" id="collection-count">0 / 32 수집</p>
   <div class="collection-grid" id="collection-grid"></div>
 </div>
 
@@ -369,6 +369,7 @@ h2{font-size:1.4rem;text-align:center;margin-bottom:12px}
 </div>
 
 <button class="reset-btn" onclick="resetGame()">초기화</button>
+<div style="text-align:center;padding:8px;font-size:0.75rem;color:#B2BEC3;margin-top:4px">v2.1 · 175문제</div>
 
 <script>
 // ==================== ENHANCED DATA ====================
@@ -687,3 +688,834 @@ function playSound(type){
     const o=ctx.createOscillator();
     o.connect(g);
     
+    if(type==='correct'){
+      // 밝은 두 음 (도-미)
+      o.type='sine';
+      o.frequency.setValueAtTime(523,ctx.currentTime);
+      o.frequency.setValueAtTime(659,ctx.currentTime+0.1);
+      g.gain.setValueAtTime(0.3,ctx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.3);
+      o.start(ctx.currentTime);
+      o.stop(ctx.currentTime+0.3);
+    } else if(type==='wrong'){
+      // 낮은 버저음
+      o.type='square';
+      o.frequency.setValueAtTime(200,ctx.currentTime);
+      o.frequency.setValueAtTime(150,ctx.currentTime+0.15);
+      g.gain.setValueAtTime(0.2,ctx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.35);
+      o.start(ctx.currentTime);
+      o.stop(ctx.currentTime+0.35);
+    } else if(type==='levelup'){
+      // 상승 아르페지오 (도-미-솔-도)
+      const notes=[523,659,784,1047];
+      notes.forEach((freq,i)=>{
+        const oo=ctx.createOscillator();
+        const gg=ctx.createGain();
+        oo.connect(gg); gg.connect(ctx.destination);
+        oo.type='sine';
+        oo.frequency.value=freq;
+        gg.gain.setValueAtTime(0.25,ctx.currentTime+i*0.12);
+        gg.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+i*0.12+0.3);
+        oo.start(ctx.currentTime+i*0.12);
+        oo.stop(ctx.currentTime+i*0.12+0.3);
+      });
+      return;
+    } else if(type==='star'){
+      // 반짝 효과음
+      o.type='sine';
+      o.frequency.setValueAtTime(880,ctx.currentTime);
+      o.frequency.setValueAtTime(1100,ctx.currentTime+0.05);
+      o.frequency.setValueAtTime(1320,ctx.currentTime+0.1);
+      g.gain.setValueAtTime(0.2,ctx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.2);
+      o.start(ctx.currentTime);
+      o.stop(ctx.currentTime+0.2);
+    } else if(type==='combo'){
+      // 콤보 효과 (빠른 상승음)
+      o.type='sawtooth';
+      o.frequency.setValueAtTime(400,ctx.currentTime);
+      o.frequency.exponentialRampToValueAtTime(1200,ctx.currentTime+0.15);
+      g.gain.setValueAtTime(0.15,ctx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.2);
+      o.start(ctx.currentTime);
+      o.stop(ctx.currentTime+0.2);
+    } else if(type==='click'){
+      // 클릭음
+      o.type='sine';
+      o.frequency.value=800;
+      g.gain.setValueAtTime(0.15,ctx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.05);
+      o.start(ctx.currentTime);
+      o.stop(ctx.currentTime+0.05);
+    } else if(type==='timeout'){
+      // 시간초과
+      o.type='triangle';
+      o.frequency.setValueAtTime(300,ctx.currentTime);
+      o.frequency.setValueAtTime(200,ctx.currentTime+0.2);
+      g.gain.setValueAtTime(0.25,ctx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.4);
+      o.start(ctx.currentTime);
+      o.stop(ctx.currentTime+0.4);
+    } else if(type==='complete'){
+      // 스테이지 클리어 팡파레
+      const melody=[523,659,784,1047,784,1047];
+      melody.forEach((freq,i)=>{
+        const oo=ctx.createOscillator();
+        const gg=ctx.createGain();
+        oo.connect(gg); gg.connect(ctx.destination);
+        oo.type='sine';
+        oo.frequency.value=freq;
+        gg.gain.setValueAtTime(0.25,ctx.currentTime+i*0.15);
+        gg.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+i*0.15+0.25);
+        oo.start(ctx.currentTime+i*0.15);
+        oo.stop(ctx.currentTime+i*0.15+0.25);
+      });
+      return;
+    }
+  } catch(e){}
+}
+
+// ==================== UTILITIES ====================
+function shuffle(arr){
+  const a=[...arr];
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+function getTitle(lv){
+  let t=TITLES[0].title;
+  for(const ti of TITLES) if(lv>=ti.level) t=ti.title;
+  return t;
+}
+
+function getTotalProgress(){
+  const totalStages=STAGES.length;
+  const completedStages=STAGES.filter(s=>save.stageStars[s.id]>0).length;
+  return Math.round(completedStages/totalStages*100);
+}
+
+function getTotalStars(){
+  return Object.values(save.stageStars).reduce((sum,stars)=>sum+stars,0);
+}
+
+// ==================== EFFECTS ====================
+function createStarEffect(){
+  const container=document.getElementById('effect-stars');
+  for(let i=0;i<8;i++){
+    const star=document.createElement('div');
+    star.className='falling-star';
+    star.textContent='⭐';
+    star.style.left=Math.random()*100+'%';
+    star.style.animationDelay=i*0.2+'s';
+    container.appendChild(star);
+    setTimeout(()=>star.remove(),2500);
+  }
+}
+
+function createCelebrationEmoji(emoji){
+  const cel=document.createElement('div');
+  cel.className='celebration-emoji';
+  cel.textContent=emoji;
+  cel.style.left=Math.random()*80+10+'%';
+  cel.style.top=Math.random()*60+20+'%';
+  document.body.appendChild(cel);
+  setTimeout(()=>cel.remove(),1500);
+}
+
+function showCombo(count){
+  const combo=document.getElementById('combo-counter');
+  combo.textContent=`🔥 콤보 x${count}`;
+  combo.style.display='block';
+  setTimeout(()=>combo.style.display='none',1500);
+}
+
+// ==================== SCREENS ====================
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  
+  if(id==='main-screen') updateMainScreen();
+  if(id==='stage-screen') renderStages();
+  if(id==='collection-screen') renderCollection();
+  if(id==='wrong-screen') renderWrongNotes();
+  if(id==='ranking-screen') renderRankings();
+}
+
+function updateMainScreen(){
+  const info=document.getElementById('main-player-info');
+  const stats=document.getElementById('progress-stats');
+  
+  if(save.level>0){
+    info.style.display='flex';
+    stats.style.display='flex';
+    document.getElementById('main-level').textContent='Lv.'+save.level;
+    document.getElementById('main-title').textContent=getTitle(save.level);
+    document.getElementById('main-stars').textContent=getTotalStars();
+    document.getElementById('total-progress').textContent=getTotalProgress()+'%';
+    document.getElementById('total-stars-count').textContent=getTotalStars();
+  }
+}
+
+function renderStages(){
+  const map=document.getElementById('stage-map');
+  map.innerHTML='';
+  
+  STAGES.forEach((stage,i)=>{
+    const isUnlocked=i===0||save.stageStars[STAGES[i-1].id]>0;
+    const stars=save.stageStars[stage.id]||0;
+    const progress=save.stageProgress[stage.id]||0;
+    const maxStars=stage.maxQuestions*3;
+    
+    let starDisplay='';
+    if(isUnlocked&&stars>0){
+      const starCount=Math.min(3,Math.ceil(stars/(maxStars/3)));
+      starDisplay='⭐'.repeat(starCount);
+    }
+    
+    const cardClass=['stage-card'];
+    if(!isUnlocked) cardClass.push('locked');
+    if(stars>0) cardClass.push('completed');
+    
+    const stageHtml=`
+      <div class="${cardClass.join(' ')}" onclick="${isUnlocked?`startQuiz('${stage.id}')`:''}">
+        <div class="stage-icon">${stage.emoji}</div>
+        <div class="stage-info">
+          <h3>${stage.name}</h3>
+          <p>${stage.desc}</p>
+          <div class="stage-stats">
+            ${starDisplay?`<span class="stage-stars">${starDisplay}</span>`:''}
+            ${progress>0?`<span class="stage-progress">${progress}/${stage.maxQuestions} 완료</span>`:''}
+          </div>
+        </div>
+        ${isUnlocked?'':'<div class="stage-lock">🔒</div>'}
+      </div>`;
+    
+    map.innerHTML+=stageHtml;
+    if(i<STAGES.length-1){
+      map.innerHTML+=`<div class="stage-connector ${isUnlocked?'':'locked'}"></div>`;
+    }
+  });
+  
+  // Update stage unlock status
+  STAGES.forEach((stage,i)=>{
+    stage.unlocked=i===0||save.stageStars[STAGES[i-1].id]>0;
+  });
+}
+
+// ==================== QUIZ SYSTEM ====================
+function startQuiz(stageId){
+  save.lastStage=stageId;
+  const stageQuestions=QUESTIONS[stageId]||[];
+  if(!stageQuestions.length) return;
+  
+  quiz={
+    questions:shuffle([...stageQuestions]),
+    current:0,stars:0,score:0,newPersons:[],timer:null,timeLeft:15,
+    isExam:false,mode:'normal',combo:0,totalTime:0,stage:stageId
+  };
+  
+  showScreen('quiz-screen');
+  showQuestion();
+}
+
+function startExam(){
+  // Collect all unlocked questions
+  const allQuestions=[];
+  STAGES.forEach(stage=>{
+    if(stage.unlocked&&QUESTIONS[stage.id]){
+      allQuestions.push(...QUESTIONS[stage.id]);
+    }
+  });
+  
+  if(allQuestions.length<20) return alert('더 많은 스테이지를 클리어해주세요!');
+  
+  quiz={
+    questions:shuffle(allQuestions).slice(0,20),
+    current:0,stars:0,score:0,newPersons:[],timer:null,timeLeft:1200, // 20 minutes
+    isExam:true,mode:'exam',combo:0,totalTime:1200,stage:'exam'
+  };
+  
+  document.getElementById('quiz-screen').classList.add('exam-mode');
+  showScreen('quiz-screen');
+  showQuestion();
+}
+
+function showQuestion(){
+  if(quiz.current>=quiz.questions.length){
+    showResult();
+    return;
+  }
+  
+  const q=quiz.questions[quiz.current];
+  const total=quiz.questions.length;
+  
+  document.getElementById('quiz-progress').textContent=`${quiz.current+1} / ${total}`;
+  document.getElementById('progress-fill').style.width=(quiz.current/total*100)+'%';
+  document.getElementById('quiz-question').textContent=q.q;
+  
+  const types={'4choice':'4지선다','ox':'O/X 퀴즈','order':'순서맞추기','fill':'빈칸채우기'};
+  document.getElementById('quiz-type-badge').textContent=types[q.type]||'';
+  
+  const area=document.getElementById('quiz-options-area');
+  area.innerHTML='';
+  
+  if(q.type==='4choice') renderChoiceQ(q,area);
+  else if(q.type==='ox') renderOXQ(q,area);
+  else if(q.type==='order') renderOrderQ(q,area);
+  else if(q.type==='fill') renderFillQ(q,area);
+  
+  startTimer();
+}
+
+function startTimer(){
+  clearInterval(quiz.timer);
+  if(!quiz.isExam) quiz.timeLeft=15;
+  updateTimerDisplay();
+  
+  quiz.timer=setInterval(()=>{
+    quiz.timeLeft--;
+    updateTimerDisplay();
+    if(quiz.timeLeft<=0){
+      clearInterval(quiz.timer);
+      handleTimeout();
+    }
+  },1000);
+}
+
+function updateTimerDisplay(){
+  const el=document.getElementById('quiz-timer');
+  if(quiz.isExam){
+    const minutes=Math.floor(quiz.timeLeft/60);
+    const seconds=quiz.timeLeft%60;
+    el.innerHTML=`⏰ ${minutes}:${seconds.toString().padStart(2,'0')}`;
+    el.classList.toggle('exam-warning',quiz.timeLeft<=300); // 5 minutes warning
+  } else {
+    el.textContent='⏱ '+quiz.timeLeft;
+    el.classList.toggle('warning',quiz.timeLeft<=5);
+  }
+}
+
+function handleTimeout(){
+  playSound('timeout');
+  const q=quiz.questions[quiz.current];
+  processAnswer(false,q,0);
+}
+
+// ==================== QUESTION TYPES ====================
+function renderChoiceQ(q,area){
+  const labels=['①','②','③','④'];
+  let html='<div class="quiz-options">';
+  q.options.forEach((o,i)=>{
+    html+=`<button class="option-btn" id="opt-${i}" onclick="selectChoice(${i})">
+      <span class="option-label">${labels[i]}</span><span>${o}</span></button>`;
+  });
+  html+='</div>';
+  area.innerHTML=html;
+}
+
+function selectChoice(i){
+  clearInterval(quiz.timer);
+  const q=quiz.questions[quiz.current];
+  const correct=i===q.answer;
+  
+  document.querySelectorAll('.option-btn').forEach(b=>b.disabled=true);
+  document.getElementById('opt-'+q.answer).classList.add('correct');
+  if(!correct) document.getElementById('opt-'+i).classList.add('wrong');
+  
+  setTimeout(()=>processAnswer(correct,q,quiz.isExam?quiz.totalTime-quiz.timeLeft:quiz.timeLeft),800);
+}
+
+function renderOXQ(q,area){
+  area.innerHTML=`<div class="ox-options">
+    <button class="ox-btn" id="ox-o" onclick="selectOX(true)">⭕</button>
+    <button class="ox-btn" id="ox-x" onclick="selectOX(false)">❌</button>
+  </div>`;
+}
+
+function selectOX(val){
+  clearInterval(quiz.timer);
+  const q=quiz.questions[quiz.current];
+  const correct=val===q.answer;
+  
+  document.querySelectorAll('.ox-btn').forEach(b=>b.style.pointerEvents='none');
+  const correctId=q.answer?'ox-o':'ox-x';
+  document.getElementById(correctId).classList.add('correct');
+  if(!correct) document.getElementById(val?'ox-o':'ox-x').classList.add('wrong');
+  
+  setTimeout(()=>processAnswer(correct,q,quiz.isExam?quiz.totalTime-quiz.timeLeft:quiz.timeLeft),800);
+}
+
+function renderOrderQ(q,area){
+  const shuffled=shuffle([...q.items.map((t,i)=>({text:t,origIdx:i}))]);
+  area.innerHTML=`<div class="order-area">
+    <div class="order-hint">👆 순서대로 클릭해주세요!</div>
+    <div class="order-items" id="order-items">
+      ${shuffled.map((item,i)=>`<div class="order-item" data-orig="${item.origIdx}" data-idx="${i}" onclick="selectOrderItem(this)">
+        <span class="order-num">${i+1}</span><span>${item.text}</span>
+      </div>`).join('')}
+    </div>
+    <button class="btn btn-primary btn-sm order-submit" id="order-submit" onclick="submitOrder()" disabled>확인! ✅</button>
+  </div>`;
+  window._orderSelected=[];
+}
+
+function selectOrderItem(el){
+  if(el.classList.contains('selected-order')){
+    el.classList.remove('selected-order');
+    window._orderSelected=window._orderSelected.filter(e=>e!==el);
+  } else {
+    el.classList.add('selected-order');
+    window._orderSelected.push(el);
+  }
+  
+  // Update order numbers
+  document.querySelectorAll('.order-item .order-num').forEach((n,i)=>{
+    const item=n.parentElement;
+    if(item.classList.contains('selected-order')){
+      const pos=window._orderSelected.indexOf(item)+1;
+      n.textContent='🔢'+pos;
+    } else {
+      n.textContent=i+1;
+    }
+  });
+  
+  document.getElementById('order-submit').disabled=window._orderSelected.length!==document.querySelectorAll('.order-item').length;
+}
+
+function submitOrder(){
+  clearInterval(quiz.timer);
+  const q=quiz.questions[quiz.current];
+  const userOrder=window._orderSelected.map(el=>parseInt(el.dataset.orig));
+  const correct=JSON.stringify(userOrder)===JSON.stringify(q.correctOrder);
+  processAnswer(correct,q,quiz.isExam?quiz.totalTime-quiz.timeLeft:quiz.timeLeft);
+}
+
+function renderFillQ(q,area){
+  area.innerHTML=`<div class="fill-area">
+    <input type="text" class="fill-input" id="fill-input" placeholder="정답을 입력하세요" autocomplete="off">
+    <div class="fill-hint">💡 힌트: ${q.answer[0].length}글자</div>
+    <button class="btn btn-primary btn-sm" onclick="submitFill()">확인! ✅</button>
+  </div>`;
+  
+  document.getElementById('fill-input').addEventListener('keydown',e=>{
+    if(e.key==='Enter') submitFill();
+  });
+  document.getElementById('fill-input').focus();
+}
+
+function submitFill(){
+  clearInterval(quiz.timer);
+  const q=quiz.questions[quiz.current];
+  const val=document.getElementById('fill-input').value.trim();
+  const correct=q.answer.some(a=>val===a);
+  processAnswer(correct,q,quiz.isExam?quiz.totalTime-quiz.timeLeft:quiz.timeLeft);
+}
+
+// ==================== ANSWER PROCESSING ====================
+function processAnswer(correct,q,timeSpent){
+  let earnedStars=0;
+  
+  if(correct){
+    quiz.score++;
+    quiz.combo++;
+    playSound('correct');
+    
+    if(quiz.isExam){
+      earnedStars=1;
+    } else {
+      if(timeSpent>=10) earnedStars=3;
+      else if(timeSpent>=5) earnedStars=2;
+      else earnedStars=1;
+    }
+    
+    quiz.stars+=earnedStars;
+    setTimeout(()=>playSound('star'),200);
+    
+    // Show combo effect
+    if(quiz.combo>=3){
+      showCombo(quiz.combo);
+      createCelebrationEmoji('🔥');
+      playSound('combo');
+    }
+    
+    // Collect person
+    if(q.person&&!save.collected.includes(q.person)){
+      save.collected.push(q.person);
+      quiz.newPersons.push(q.person);
+    }
+  } else {
+    quiz.combo=0;
+    playSound('wrong');
+    
+    // Add to wrong notes
+    const existing=save.wrongNotes.find(w=>w.id===q.id);
+    if(!existing){
+      save.wrongNotes.push({
+        id:q.id,q:q.q,type:q.type,stage:quiz.stage,
+        correctAnswer:getCorrectAnswerText(q),
+        explain:q.explain
+      });
+    }
+  }
+  
+  saveSave();
+  showFeedback(correct,q,earnedStars);
+}
+
+function getCorrectAnswerText(q){
+  if(q.type==='4choice') return q.options[q.answer];
+  if(q.type==='ox') return q.answer?'O':'X';
+  if(q.type==='fill') return q.answer[0];
+  if(q.type==='order') return '올바른 순서대로';
+  return '';
+}
+
+function showFeedback(correct,q,stars){
+  const overlay=document.getElementById('feedback-overlay');
+  const card=document.getElementById('feedback-card');
+  const person=q.person?PERSONS[q.person]:null;
+  const isNew=quiz.newPersons.includes(q.person);
+  
+  // Create star effect if correct
+  if(correct){
+    createStarEffect();
+    if(stars===3) createCelebrationEmoji('🌟');
+  }
+  
+  let starsHtml='';
+  if(correct&&!quiz.isExam){
+    for(let i=0;i<3;i++){
+      starsHtml+=`<span style="animation-delay:${i*0.2}s">${i<stars?'⭐':'☆'}</span>`;
+    }
+  }
+  
+  card.innerHTML=`
+    <div class="feedback-emoji">${correct?'🎉':'😢'}</div>
+    <div class="feedback-title">${correct?'정답이에요!':'아쉬워요...'}</div>
+    <div class="feedback-desc">${q.explain}</div>
+    ${correct&&!quiz.isExam?`<div class="feedback-stars">${starsHtml}</div>`:''}
+    ${correct&&isNew&&person?`<div class="person-card-mini">🆕 ${person.emoji} <b>${person.name}</b> 수집!</div>`:''}
+    <button class="btn btn-sm ${correct?'btn-secondary':'btn-primary'}" onclick="closeFeedbackAndNext()">
+      ${quiz.current<quiz.questions.length-1?'다음 문제 →':'결과 보기 🏆'}
+    </button>`;
+  
+  overlay.style.display='flex';
+}
+
+function closeFeedbackAndNext(){
+  document.getElementById('feedback-overlay').style.display='none';
+  quiz.current++;
+  showQuestion();
+}
+
+// ==================== RESULTS ====================
+function showResult(){
+  clearInterval(quiz.timer);
+  document.getElementById('quiz-screen').classList.remove('exam-mode');
+  
+  const total=quiz.questions.length;
+  const pct=Math.round(quiz.score/total*100);
+  
+  // Calculate XP gain
+  let xpGain=quiz.score*10;
+  if(!quiz.isExam) xpGain+=quiz.stars*2;
+  
+  const oldLevel=save.level;
+  save.xp+=xpGain;
+  save.level=Math.max(1,Math.floor(save.xp/50)+1);
+  save.totalStars+=quiz.stars;
+  
+  if(!quiz.isExam){
+    // Update stage progress
+    save.stageStars[quiz.stage]=Math.max(save.stageStars[quiz.stage]||0,quiz.stars);
+    save.stageProgress[quiz.stage]=Math.max(save.stageProgress[quiz.stage]||0,quiz.score);
+  } else {
+    // Record exam result
+    const examResult={
+      score:quiz.score,
+      total:total,
+      percentage:pct,
+      date:new Date().toISOString().split('T')[0],
+      nickname:save.nickname||'익명'
+    };
+    save.examRecord.push(examResult);
+    updateRanking('exam',examResult);
+  }
+  
+  const leveledUp=save.level>oldLevel;
+  saveSave();
+  playSound('complete');
+  if(leveledUp) setTimeout(()=>playSound('levelup'),500);
+  
+  // Update UI
+  const resultHeader=quiz.isExam?'📝':'🎉';
+  const resultTitle=quiz.isExam?'모의시험 완료!':
+    pct>=70?`${STAGES.find(s=>s.id===quiz.stage)?.name} 클리어!`:'다시 도전해보자!';
+  
+  document.getElementById('result-header').textContent=resultHeader;
+  document.getElementById('result-title').textContent=resultTitle;
+  
+  // Level up banner
+  document.getElementById('level-up-area').innerHTML=leveledUp?
+    `<div class="level-up-banner">🆙 레벨 업! Lv.${save.level} ${getTitle(save.level)}</div>`:'';
+  
+  // Grade prediction for exam
+  let gradeArea='';
+  if(quiz.isExam){
+    let grade='더 공부가 필요해요 ✊';
+    if(pct>=90) grade='6급 합격 예상! 🏆';
+    else if(pct>=75) grade='7급 수준 💪';
+    else if(pct>=60) grade='8급 수준 📚';
+    gradeArea=`<div class="grade-prediction">${grade}</div>`;
+  }
+  document.getElementById('grade-area').innerHTML=gradeArea;
+  
+  // Stats
+  const statsHtml=quiz.isExam?`
+    <div class="result-stat"><div class="stat-value">${quiz.score}/${total}</div><div class="stat-label">정답</div></div>
+    <div class="result-stat"><div class="stat-value">${pct}%</div><div class="stat-label">정답률</div></div>
+    <div class="result-stat"><div class="stat-value">+${xpGain}</div><div class="stat-label">경험치</div></div>
+    <div class="result-stat"><div class="stat-value">Lv.${save.level}</div><div class="stat-label">레벨</div></div>`:`
+    <div class="result-stat"><div class="stat-value">${quiz.score}/${total}</div><div class="stat-label">정답</div></div>
+    <div class="result-stat"><div class="stat-value" style="color:var(--star)">⭐${quiz.stars}</div><div class="stat-label">별</div></div>
+    <div class="result-stat"><div class="stat-value">${pct}%</div><div class="stat-label">정답률</div></div>
+    <div class="result-stat"><div class="stat-value">+${xpGain}</div><div class="stat-label">경험치</div></div>`;
+  
+  document.getElementById('result-summary').innerHTML=statsHtml;
+  
+  // New persons
+  const cardsArea=document.getElementById('result-cards-area');
+  if(quiz.newPersons.length>0){
+    cardsArea.innerHTML='<p style="font-weight:700;margin:12px 0 8px;color:var(--primary)">🆕 새로 수집한 인물</p><div class="result-cards">'+
+      quiz.newPersons.map(pid=>{
+        const p=PERSONS[pid];
+        return`<div class="result-person"><div class="rp-emoji">${p.emoji}</div><div>${p.name}</div></div>`;
+      }).join('')+'</div>';
+  } else {
+    cardsArea.innerHTML='';
+  }
+  
+  // Buttons
+  const btnsArea=document.getElementById('result-btns');
+  if(quiz.isExam){
+    btnsArea.innerHTML=`
+      <button class="btn btn-primary" onclick="startExam()">🔄 다시 도전</button>
+      <button class="btn btn-secondary" onclick="showScreen('ranking-screen')">🏆 랭킹 보기</button>
+      <button class="btn btn-outline" onclick="showScreen('main-screen')">🏠 메인으로</button>`;
+  } else {
+    btnsArea.innerHTML=`
+      <button class="btn btn-primary" onclick="retryCurrentStage()">🔄 다시 도전</button>
+      <button class="btn btn-secondary" onclick="showScreen('stage-screen')">📍 다른 시대</button>
+      <button class="btn btn-outline" onclick="showScreen('main-screen')">🏠 메인으로</button>`;
+  }
+  
+  document.getElementById('progress-fill').style.width='100%';
+  showScreen('result-screen');
+}
+
+function retryCurrentStage(){
+  if(save.lastStage) startQuiz(save.lastStage);
+  else showScreen('stage-screen');
+}
+
+// ==================== COLLECTION ====================
+function renderCollection(){
+  const grid=document.getElementById('collection-grid');
+  const allKeys=Object.keys(PERSONS);
+  
+  document.getElementById('collection-count').textContent=`${save.collected.length} / ${allKeys.length} 수집`;
+  grid.innerHTML='';
+  
+  // Group by era
+  const eras=['고조선','선사시대','철기시대','위만조선','고구려','백제','신라','통일신라','발해','고려','조선','조선 후기','실학','개화기','일제강점기','현대'];
+  
+  allKeys.forEach(key=>{
+    const p=PERSONS[key];
+    const has=save.collected.includes(key);
+    
+    grid.innerHTML+=`<div class="person-card ${has?'':'locked'}" onclick="${has?`showPersonDetail('${key}')`:''}">
+      <div class="pc-emoji">${has?p.emoji:'❓'}</div>
+      <div class="pc-name">${has?p.name:'???'}</div>
+      ${has?`<div class="pc-desc">${p.desc}</div><div class="pc-era">${p.era}</div>`:`<div class="pc-desc">???</div>`}
+    </div>`;
+  });
+}
+
+function showPersonDetail(key){
+  const p=PERSONS[key];
+  const overlay=document.getElementById('person-detail-overlay');
+  
+  document.getElementById('person-detail-content').innerHTML=`
+    <div class="pd-emoji">${p.emoji}</div>
+    <div class="pd-name">${p.name}</div>
+    <div class="pc-era" style="margin:8px auto;display:inline-block">${p.era}</div>
+    <div class="pd-info" style="margin-top:12px">${p.detail}</div>`;
+  
+  overlay.style.display='flex';
+}
+
+function hidePersonDetail(){
+  document.getElementById('person-detail-overlay').style.display='none';
+}
+
+// ==================== RANKINGS ====================
+function updateRanking(type,record){
+  if(!save.nickname) return;
+  
+  const ranking=save.rankings[type];
+  const existingIndex=ranking.findIndex(r=>r.nickname===save.nickname);
+  
+  if(existingIndex>=0){
+    if(type==='exam'&&record.score>ranking[existingIndex].score){
+      ranking[existingIndex]=record;
+    }
+  } else {
+    ranking.push(record);
+  }
+  
+  // Sort and limit
+  ranking.sort((a,b)=>b.score-a.score);
+  save.rankings[type]=ranking.slice(0,10);
+}
+
+function saveNickname(){
+  const input=document.getElementById('nickname-input');
+  const nickname=input.value.trim();
+  if(!nickname) return;
+  
+  save.nickname=nickname;
+  saveSave();
+  
+  // Update total ranking
+  updateRanking('total',{
+    nickname:nickname,
+    level:save.level,
+    totalStars:getTotalStars(),
+    progress:getTotalProgress(),
+    date:new Date().toISOString().split('T')[0]
+  });
+  
+  input.value='';
+  renderRankings();
+}
+
+function showRanking(type){
+  document.querySelectorAll('.ranking-tab').forEach(t=>t.classList.remove('active'));
+  event.target.classList.add('active');
+  
+  const list=document.getElementById('ranking-list');
+  const rankings=save.rankings[type]||[];
+  
+  if(rankings.length===0){
+    list.innerHTML='<div class="empty-state"><span class="empty-emoji">🏆</span>아직 랭킹이 없어요!<br>첫 번째가 되어보세요!</div>';
+    return;
+  }
+  
+  list.innerHTML=rankings.map((record,i)=>{
+    let rankClass='normal';
+    if(i===0) rankClass='gold';
+    else if(i===1) rankClass='silver';  
+    else if(i===2) rankClass='bronze';
+    
+    let scoreText='';
+    if(type==='total') scoreText=`Lv.${record.level} • ⭐${record.totalStars}`;
+    else if(type==='exam') scoreText=`${record.score}점 (${record.percentage}%)`;
+    else scoreText=`${record.score}점`;
+    
+    return`<div class="ranking-item">
+      <div class="ranking-rank ${rankClass}">${i+1}</div>
+      <div class="ranking-info">
+        <div class="ranking-name">${record.nickname}</div>
+        <div class="ranking-score">${scoreText}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderRankings(){
+  const input=document.getElementById('nickname-input');
+  if(save.nickname) input.placeholder=`현재: ${save.nickname}`;
+  showRanking('total');
+}
+
+// ==================== WRONG NOTES ====================
+function renderWrongNotes(){
+  const list=document.getElementById('wrong-list');
+  const retryBtn=document.getElementById('retry-wrong-btn');
+  const clearBtn=document.getElementById('clear-wrong-btn');
+  
+  if(save.wrongNotes.length===0){
+    list.innerHTML='<div class="empty-state"><span class="empty-emoji">🎉</span>틀린 문제가 없어요!<br>완벽해요!</div>';
+    retryBtn.style.display='none';
+    clearBtn.style.display='none';
+    return;
+  }
+  
+  retryBtn.style.display='';
+  clearBtn.style.display='';
+  
+  list.innerHTML=save.wrongNotes.map(w=>`
+    <div class="wrong-item">
+      <div class="wq">${w.q}</div>
+      <div class="wc">✅ 정답: ${w.correctAnswer}</div>
+      <div class="we">💡 ${w.explain}</div>
+      <div style="font-size:.7rem;color:#b2bec3;margin-top:4px">${STAGES.find(s=>s.id===w.stage)?.name||'알 수 없음'}</div>
+    </div>`).join('');
+}
+
+function retryWrongQuestions(){
+  const wrongIds=save.wrongNotes.map(w=>w.id);
+  const allQuestions=[];
+  
+  Object.values(QUESTIONS).forEach(stageQuestions=>{
+    stageQuestions.forEach(q=>{
+      if(wrongIds.includes(q.id)) allQuestions.push(q);
+    });
+  });
+  
+  if(allQuestions.length===0) return;
+  
+  quiz={
+    questions:shuffle(allQuestions),
+    current:0,stars:0,score:0,newPersons:[],timer:null,timeLeft:15,
+    isExam:false,mode:'retry',combo:0,totalTime:0,stage:'retry'
+  };
+  
+  showScreen('quiz-screen');
+  showQuestion();
+}
+
+function clearWrongNotes(){
+  if(!confirm('오답 노트를 비울까요?')) return;
+  save.wrongNotes=[];
+  saveSave();
+  renderWrongNotes();
+}
+
+// ==================== UTILITY FUNCTIONS ====================
+function resetGame(){
+  if(!confirm('모든 진행상황을 초기화할까요?')) return;
+  localStorage.removeItem('kh_save_v2');
+  localStorage.removeItem('kh_save'); // Remove old version too
+  location.reload();
+}
+
+// ==================== INITIALIZATION ====================
+document.addEventListener('DOMContentLoaded',()=>{
+  updateMainScreen();
+  
+  // Unlock first stage if needed
+  if(!STAGES[0].unlocked){
+    STAGES[0].unlocked=true;
+    saveSave();
+  }
+  
+  console.log('한국사 타임어드벤처 2.0 로드 완료! 🎮');
+});
+</script>
+</body>
+</html>
