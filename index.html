@@ -284,7 +284,7 @@ h2{font-size:1.4rem;text-align:center;margin-bottom:12px}
 <!-- QUIZ SCREEN -->
 <div id="quiz-screen" class="screen">
   <div class="quiz-header">
-    <span class="quiz-progress" id="quiz-progress">1 / 12</span>
+    <span class="quiz-progress" id="quiz-progress">1 / 25</span>
     <span class="quiz-timer" id="quiz-timer">⏱ 15</span>
   </div>
   <div class="combo-counter" id="combo-counter">🔥 콤보 x3</div>
@@ -315,7 +315,7 @@ h2{font-size:1.4rem;text-align:center;margin-bottom:12px}
     <h2>📚 인물 도감</h2>
     <div style="width:60px"></div>
   </div>
-  <p style="font-size:.9rem;color:#636e72;text-align:center" id="collection-count">0 / 32 수집</p>
+  <p style="font-size:.9rem;color:#636e72;text-align:center" id="collection-count">0 / 50 수집</p>
   <div class="collection-grid" id="collection-grid"></div>
 </div>
 
@@ -378,6 +378,9 @@ const PERSONS = {
   dolmen_builder: {emoji:'🗿',name:'거석문화인',desc:'고인돌을 만든 청동기인',detail:'청동기시대 사람들이 만든 거대한 돌무덤이 고인돌이에요. 강화도, 전남 고창 등에 많이 남아있어서 세계문화유산으로 지정되기도 했답니다!',era:'선사시대'},
   iron_master: {emoji:'⚒️',name:'철기장인',desc:'철기 제작 기술을 발전시킨 장인',detail:'철기시대가 되면서 농기구와 무기가 발달했어요. 철로 만든 도구는 청동기보다 훨씬 단단하고 유용했답니다!',era:'철기시대'},
   wiman: {emoji:'🏰',name:'위만',desc:'고조선 마지막 왕조를 세운 인물',detail:'중국에서 온 위만이 고조선의 준왕을 몰아내고 위만조선을 세웠어요. 한나라와 맞서 싸웠지만 결국 멸망했답니다.',era:'위만조선'},
+  biryu: {emoji:'🏞️',name:'비류',desc:'온조의 형으로 미추홀에 정착한 인물',detail:'비류는 온조의 형으로 미추홀(인천)에 정착했지만, 온조가 세운 백제가 더 번영하자 부끄러워하며 죽었다고 전해져요.',era:'백제 초기'},
+  ungnyeo: {emoji:'🐻',name:'웅녀',desc:'곰에서 변한 단군의 어머니',detail:'환웅과 함께 동굴에서 100일 동안 쑥과 마늘만 먹고 버텨서 사람이 된 웅녀는 단군왕검의 어머니가 되었어요!',era:'고조선'},
+  gija: {emoji:'📚',name:'기자',desc:'기자조선을 세웠다고 전해지는 인물',detail:'중국 상나라의 현자 기자가 조선에 와서 문명을 전했다는 전설이 있어요. 기자조선이라고 불리기도 해요.',era:'기자조선'},
   
   // 삼국시대
   jumong: {emoji:'🏹',name:'주몽',desc:'고구려를 세운 왕',detail:'주몽은 부여에서 내려와 고구려를 세웠어요. 활을 아주 잘 쏘아서 "주몽"이라는 이름이 붙었답니다! 고구려의 첫 번째 왕이에요.',era:'고구려'},
@@ -385,6 +388,9 @@ const PERSONS = {
   jangsu:{emoji:'👑',name:'장수왕',desc:'평양으로 수도를 옮긴 왕',detail:'장수왕은 광개토대왕의 아들로, 수도를 국내성에서 평양으로 옮겼어요. 이름처럼 오래 살았고(98세!), 고구려의 전성기를 이끌었답니다.',era:'고구려'},
   onjo:{emoji:'🏛️',name:'온조',desc:'백제를 세운 왕',detail:'온조는 주몽의 아들로, 남쪽으로 내려와 위례성에 백제를 세웠어요. 한강 유역을 중심으로 강력한 나라를 만들었답니다.',era:'백제'},
   geunchogo:{emoji:'🛡️',name:'근초고왕',desc:'백제의 전성기를 이끈 왕',detail:'근초고왕은 백제의 전성기를 이끈 왕이에요. 마한을 모두 통합하고, 일본과 중국에도 교류했답니다. 고구려 고국원왕을 전사시키기도 했어요.',era:'백제'},
+  eulji_mundeok: {emoji:'🗡️',name:'을지문덕',desc:'살수대첩의 영웅',detail:'을지문덕은 고구려의 장군으로 살수(청천강)에서 수나라 대군을 물리친 영웅이에요. 적을 깊이 유인한 후 일거에 무찌르는 전략을 사용했답니다!',era:'고구려'},
+  park_hyeokgeose: {emoji:'🥚',name:'박혁거세',desc:'신라를 세운 첫 번째 왕',detail:'박혁거세는 신라의 시조로 알에서 태어났다는 전설이 있어요. 경주 나정에서 태어나 신라 1천년 역사의 시작을 열었답니다!',era:'신라'},
+  kim_suro: {emoji:'👸',name:'김수로',desc:'가야의 시조',detail:'김수로왕은 가야연맹의 시조로 하늘에서 내려온 황금 알에서 태어났다고 전해져요. 인도에서 온 허황후와 결혼했답니다!',era:'가야'},
   
   // 남북국시대 - 통일신라 & 발해
   munmu:{emoji:'🌊',name:'문무왕',desc:'삼국통일을 완성한 신라왕',detail:'문무왕은 백제와 고구려를 차례로 멸망시키고 당나라 세력까지 축출하여 최초로 한반도를 통일했어요. 바다의 용이 되어 나라를 지키겠다며 동해에 묻혔답니다.',era:'통일신라'},
@@ -392,6 +398,9 @@ const PERSONS = {
   uisang:{emoji:'🏯',name:'의상대사',desc:'화엄사상을 전파한 고승',detail:'의상대사는 당나라에서 화엄사상을 배워와 한국 불교발전에 크게 기여했어요. 부석사를 창건하고 많은 제자를 길러냈답니다.',era:'통일신라'},
   dae_joyeong:{emoji:'👑',name:'대조영',desc:'발해를 건국한 왕',detail:'고구려가 멸망한 후 대조영이 고구려 유민과 말갈족을 이끌고 발해를 세웠어요. "해동성국"이라 불릴 정도로 강성했던 나라의 첫 임금이에요!',era:'발해'},
   jang_bogo:{emoji:'⛵',name:'장보고',desc:'해상왕이라 불린 신라 상인',detail:'장보고는 청해진을 설치하고 동아시아 해상무역을 장악한 신라의 해상왕이에요. 당나라, 일본과의 무역을 통해 엄청난 부를 축적했답니다!',era:'통일신라'},
+  seondeok:{emoji:'🌟',name:'선덕여왕',desc:'신라 최초의 여왕',detail:'선덕여왕은 신라 최초의 여왕으로 첨성대를 만들고 황룡사 9층탑을 세웠어요. 지혜로워서 미리 일을 아는 능력이 있었다고 전해져요!',era:'신라'},
+  jindeok:{emoji:'👸',name:'진덕여왕',desc:'신라의 두 번째 여왕',detail:'진덕여왕은 선덕여왕 다음으로 즉위한 신라의 두 번째 여왕이에요. 김춘추와 김유신을 등용하여 삼국통일의 기반을 마련했답니다!',era:'신라'},
+  dae_inseon:{emoji:'🏛️',name:'대인수',desc:'발해 문왕으로 발해를 크게 발전시킨 왕',detail:'대인수는 발해의 3대 왕으로 문왕이라고 불려요. 상경 용천부에서 동경 용원부로 수도를 옮기고 발해를 크게 발전시켰답니다!',era:'발해'},
   
   // 고려
   wang_geon:{emoji:'🏰',name:'왕건',desc:'고려를 건국한 태조',detail:'왕건은 후삼국을 통일하고 고려를 세웠어요. 개성에 도읍을 정하고 "민본정치"를 강조했으며, 훈요십조를 남겨 후손들에게 정치의 원칙을 제시했답니다.',era:'고려'},
@@ -399,6 +408,9 @@ const PERSONS = {
   seo_hui:{emoji:'🎭',name:'서희',desc:'거란의 침입을 말로 막은 외교관',detail:'서희는 거란의 1차 침입 때 소손녕과 담판을 벌여 전쟁 없이 강동 6주를 얻어낸 뛰어난 외교관이에요. "말 한 마디로 성 천 개를 얻었다"는 말이 있답니다!',era:'고려'},
   gang_gam_chan:{emoji:'🏹',name:'강감찬',desc:'귀주대첩의 영웅',detail:'강감찬은 거란의 3차 침입 때 귀주에서 거란군 대부분을 물리친 명장이에요. 물을 막아두었다가 한번에 터뜨려 적을 물리치는 지략을 사용했답니다!',era:'고려'},
   choi_chung_heon:{emoji:'⚔️',name:'최충헌',desc:'무신정권을 세운 무신',detail:'최충헌은 무신정변 이후 실권을 잡고 무신정권을 확립했어요. 왕을 허수아비로 만들고 자신이 실질적으로 나라를 다스린 인물이랍니다.',era:'고려'},
+  jung_jung_bu:{emoji:'⚔️',name:'정중부',desc:'무신정변을 일으킨 무신',detail:'정중부는 의종 때 무신정변을 일으켜 문신들의 정권을 무너뜨린 무신이에요. 이후 무신정권 시대가 시작되었답니다.',era:'고려'},
+  yun_gwan:{emoji:'🏹',name:'윤관',desc:'동북 9성을 쌓은 고려 장군',detail:'윤관은 별무반을 조직하여 여진족을 물리치고 함경도 지역에 동북 9성을 쌓아 고려의 영토를 넓혔어요!',era:'고려'},
+  gung_ye:{emoji:'😈',name:'궁예',desc:'후고구려를 세운 인물',detail:'궁예는 신라 왕족 출신으로 후고구려(마진, 태봉)를 세웠어요. 미륵불이라고 자칭했지만 폭정으로 인해 왕건에게 축출당했답니다.',era:'후삼국'},
   
   // 조선 전기
   yi_seong_gye:{emoji:'🏹',name:'이성계',desc:'조선을 건국한 태조',detail:'이성계는 위화도 회군으로 고려를 무너뜨리고 조선을 세웠어요. "조선"이라는 국호를 정하고 한양으로 수도를 옮겨 500년 왕조의 기틀을 마련했답니다.',era:'조선'},
@@ -406,6 +418,9 @@ const PERSONS = {
   jang_yeong_sil:{emoji:'⚙️',name:'장영실',desc:'조선 최고의 과학기술자',detail:'장영실은 노예 출신이지만 뛰어난 재능으로 세종의 총애를 받은 과학자예요. 물시계, 해시계, 측우기 등 많은 과학 기구를 만들었답니다!',era:'조선'},
   yi_hwang:{emoji:'📝',name:'이황(퇴계)',desc:'성리학을 집대성한 학자',detail:'퇴계 이황은 조선 성리학의 대가로 "동방의 주자"라 불렸어요. 도산서원을 세워 후진 양성에 힘썼고, 인간의 마음에 대해 깊이 연구했답니다.',era:'조선'},
   yi_i:{emoji:'🎋',name:'이이(율곡)',desc:'실용적 개혁을 추구한 학자',detail:'율곡 이이는 현실적인 개혁 정책을 제시한 조선의 대학자예요. "십만양병설"로 국방력 강화를 주장했고, 많은 교육기관을 세웠답니다.',era:'조선'},
+  jeong_do_jeon:{emoji:'📜',name:'정도전',desc:'조선 건국의 설계자',detail:'정도전은 조선 건국에 결정적 역할을 한 학자예요. 조선의 정치제도와 한양 궁궐 설계까지 담당한 조선 건국의 일등공신이랍니다!',era:'조선'},
+  yi_bang_won:{emoji:'👑',name:'이방원(태종)',desc:'조선 3대 왕 태종',detail:'이방원은 조선 3대 왕 태종으로 왕권을 강화하고 조선의 기틀을 다진 왕이에요. 아버지 이성계를 도와 조선 건국에 큰 역할을 했답니다!',era:'조선'},
+  heo_jun:{emoji:'💊',name:'허준',desc:'동의보감을 쓴 의원',detail:'허준은 동의보감을 써서 우리나라 전통 의학을 집대성한 의원이에요. 동의보감은 세계기록유산으로 등재되기도 했답니다!',era:'조선'},
   
   // 조선 후기 & 개화기  
   sejong_late:{emoji:'📚',name:'정조',desc:'문예부흥을 이끈 조선 후기 왕',detail:'정조는 규장각을 설치하고 수원 화성을 축조한 문화군주예요. 학문을 장려하고 실학을 후원하여 조선 후기 문예부흥을 이끌었답니다!',era:'조선 후기'},
@@ -414,23 +429,28 @@ const PERSONS = {
   jeong_yag_yong:{emoji:'🏗️',name:'정약용',desc:'목민심서를 쓴 실학의 집대성자',detail:'다산 정약용은 실학을 집대성한 학자로 "목민심서", "경세유표" 등을 썼어요. 수원 화성 설계에도 참여했고 거중기를 발명했답니다!',era:'실학'},
   heungseon:{emoji:'👑',name:'흥선대원군',desc:'쇄국정책을 펼친 조선 후기 권력자',detail:'흥선대원군은 고종의 아버지로 섭정을 했어요. 경복궁을 재건하고 서원을 철폐했지만, 쇄국정책으로 개화를 늦춰 비판받기도 했답니다.',era:'조선 후기'},
   kim_ok_gyun:{emoji:'🔥',name:'김옥균',desc:'갑신정변을 일으킨 개화파',detail:'김옥균은 갑신정변을 주도한 급진개화파 인물이에요. 일본의 메이지유신을 본받아 조선을 근대화하려 했지만 실패하고 상하이에서 암살당했답니다.',era:'개화기'},
+  gim_jeong_ho:{emoji:'🗺️',name:'김정호',desc:'대동여지도를 만든 지리학자',detail:'김정호는 우리나라 전체를 정확하게 그린 대동여지도를 만든 조선 후기의 지리학자예요. 22년간 전국을 답사하며 정밀한 지도를 완성했답니다!',era:'조선 후기'},
+  yu_hyeong_won:{emoji:'🌾',name:'유형원',desc:'반계수록을 쓴 실학자',detail:'반계 유형원은 실학의 아버지라 불리는 학자로 "반계수록"을 써서 토지제도 개혁을 주장했어요. 실학 사상의 출발점이 되었답니다!',era:'실학'},
   
   // 일제강점기 & 현대
   an_jung_geun:{emoji:'🎯',name:'안중근',desc:'이토 히로부미를 처단한 독립운동가',detail:'안중근은 하얼빈에서 조선침략의 원흉 이토 히로부미를 저격한 의사예요. 뤼순 감옥에서 "동양평화론"을 쓰며 조선의 독립 의지를 보여줬답니다!',era:'일제강점기'},
   yu_gwan_sun:{emoji:'🌸',name:'유관순',desc:'3.1운동의 상징이 된 열사',detail:'유관순은 이화학당 학생으로 3.1운동에 참여했다가 체포된 독립운동가예요. 감옥에서도 만세를 부르며 끝까지 저항하다 17세의 나이로 순국했습니다.',era:'일제강점기'},
   kim_gu:{emoji:'🇰🇷',name:'김구',desc:'임시정부를 이끈 독립운동가',detail:'백범 김구는 대한민국임시정부 주석으로 광복까지 독립운동을 이끈 지도자예요. "내가 원하는 우리나라"에서 문화강국을 꿈꿨던 분이랍니다.',era:'일제강점기'},
   syngman_rhee:{emoji:'🎩',name:'이승만',desc:'대한민국 초대 대통령',detail:'이승만은 대한민국 초대 대통령으로 정부수립과 6.25전쟁을 겪었어요. 미국에서 독립운동을 하며 외교독립론을 주장했던 인물이기도 합니다.',era:'현대'},
-  park_chung_hee:{emoji:'🏭',name:'박정희',desc:'경제발전을 이끈 대통령',detail:'박정희 대통령은 5.16 군사정변으로 집권한 후 경제개발 5개년계획으로 한국을 농업국에서 공업국으로 변화시켰어요. 한강의 기적을 이룬 주역이랍니다.',era:'현대'}
+  park_chung_hee:{emoji:'🏭',name:'박정희',desc:'경제발전을 이끈 대통령',detail:'박정희 대통령은 5.16 군사정변으로 집권한 후 경제개발 5개년계획으로 한국을 농업국에서 공업국으로 변화시켰어요. 한강의 기적을 이룬 주역이랍니다.',era:'현대'},
+  yun_bong_gil:{emoji:'💣',name:'윤봉길',desc:'상하이 홍커우 공원에서 의거를 일으킨 의사',detail:'윤봉길 의사는 상하이 홍커우 공원에서 일본군 장성들을 향해 폭탄을 던진 독립운동가예요. 이 의거로 중국이 우리를 인정하게 되었답니다!',era:'일제강점기'},
+  lee_bong_chang:{emoji:'🎯',name:'이봉창',desc:'일왕 저격을 시도한 의사',detail:'이봉창 의사는 일본 도쿄에서 일왕을 저격하려다 실패한 독립운동가예요. 김구의 한인애국단 소속으로 활동했답니다.',era:'일제강점기'},
+  ahn_chang_ho:{emoji:'🎓',name:'안창호',desc:'도산 선생으로 불리는 교육자',detail:'도산 안창호는 교육을 통한 독립운동을 주장한 교육자예요. 흥사단을 만들고 "실력양성론"을 주장하며 인재 양성에 힘썼답니다!',era:'일제강점기'}
 };
 
 const STAGES = [
-  {id:'prehistoric',name:'선사시대 & 고조선',emoji:'🗿',desc:'구석기부터 고조선까지',unlocked:true,maxQuestions:10,persons:['gojoseon_king','dolmen_builder','iron_master','wiman']},
-  {id:'samguk',name:'삼국시대',emoji:'⚔️',desc:'고구려·백제·신라의 경쟁',unlocked:false,maxQuestions:12,persons:['jumong','gwanggaeto','jangsu','onjo','geunchogo']},
-  {id:'unified',name:'남북국시대',emoji:'🌅',desc:'통일신라와 발해',unlocked:false,maxQuestions:10,persons:['munmu','wonhyo','uisang','dae_joyeong','jang_bogo']},
-  {id:'goryeo',name:'고려시대',emoji:'🏰',desc:'고려의 건국과 발전',unlocked:false,maxQuestions:12,persons:['wang_geon','sejong_goryeo','seo_hui','gang_gam_chan','choi_chung_heon']},
-  {id:'joseon_early',name:'조선 전기',emoji:'📜',desc:'조선 건국과 문화융성',unlocked:false,maxQuestions:12,persons:['yi_seong_gye','sejong','jang_yeong_sil','yi_hwang','yi_i']},
-  {id:'joseon_late',name:'조선 후기 & 개화기',emoji:'🌸',desc:'실학과 개화운동',unlocked:false,maxQuestions:12,persons:['sejong_late','park_ji_won','hong_dae_yong','jeong_yag_yong','kim_ok_gyun']},
-  {id:'modern',name:'일제강점기 & 현대',emoji:'🇰🇷',desc:'독립운동과 현대사',unlocked:false,maxQuestions:12,persons:['an_jung_geun','yu_guan_sun','kim_gu','syngman_rhee','park_chung_hee']}
+  {id:'prehistoric',name:'선사시대 & 고조선',emoji:'🗿',desc:'구석기부터 고조선까지',unlocked:true,maxQuestions:25,persons:['gojoseon_king','dolmen_builder','iron_master','wiman','biryu','ungnyeo','gija']},
+  {id:'samguk',name:'삼국시대',emoji:'⚔️',desc:'고구려·백제·신라의 경쟁',unlocked:false,maxQuestions:25,persons:['jumong','gwanggaeto','jangsu','onjo','geunchogo','eulji_mundeok','park_hyeokgeose','kim_suro']},
+  {id:'unified',name:'남북국시대',emoji:'🌅',desc:'통일신라와 발해',unlocked:false,maxQuestions:25,persons:['munmu','wonhyo','uisang','dae_joyeong','jang_bogo','seondeok','jindeok','dae_inseon']},
+  {id:'goryeo',name:'고려시대',emoji:'🏰',desc:'고려의 건국과 발전',unlocked:false,maxQuestions:25,persons:['wang_geon','sejong_goryeo','seo_hui','gang_gam_chan','choi_chung_heon','jung_jung_bu','yun_gwan','gung_ye']},
+  {id:'joseon_early',name:'조선 전기',emoji:'📜',desc:'조선 건국과 문화융성',unlocked:false,maxQuestions:25,persons:['yi_seong_gye','sejong','jang_yeong_sil','yi_hwang','yi_i','jeong_do_jeon','yi_bang_won','heo_jun']},
+  {id:'joseon_late',name:'조선 후기 & 개화기',emoji:'🌸',desc:'실학과 개화운동',unlocked:false,maxQuestions:25,persons:['sejong_late','park_ji_won','hong_dae_yong','jeong_yag_yong','kim_ok_gyun','gim_jeong_ho','yu_hyeong_won','heungseon']},
+  {id:'modern',name:'일제강점기 & 현대',emoji:'🇰🇷',desc:'독립운동과 현대사',unlocked:false,maxQuestions:25,persons:['an_jung_geun','yu_gwan_sun','kim_gu','syngman_rhee','park_chung_hee','yun_bong_gil','lee_bong_chang','ahn_chang_ho']}
 ];
 
 const QUESTIONS = {
@@ -444,47 +464,103 @@ const QUESTIONS = {
     {id:7,type:'4choice',q:'비파형 동검은 어느 시대의 대표적인 유물인가요?',options:['신석기','청동기','철기','삼국시대'],answer:1,person:'dolmen_builder',explain:'비파형 동검은 청동기 시대 고조선의 대표적인 청동 유물이에요!'},
     {id:8,type:'fill',q:'고조선의 법 중 남의 물건을 훔치면 ○○배를 갚아야 했어요.',answer:['12','십이'],person:'gojoseon_king',explain:'8조법에서 도둑질하면 12배를 배상하도록 했어요!'},
     {id:9,type:'ox',q:'위만은 고조선 사람이다.',answer:false,person:'wiman',explain:'위만은 중국 연나라에서 온 망명객이었어요!'},
-    {id:10,type:'4choice',q:'빗살무늬토기는 어느 시대의 대표 유물인가요?',options:['구석기','신석기','청동기','철기'],answer:1,person:'dolmen_builder',explain:'빗살무늬토기는 신석기 시대의 대표적인 토기예요!'}
+    {id:10,type:'4choice',q:'빗살무늬토기는 어느 시대의 대표 유물인가요?',options:['구석기','신석기','청동기','철기'],answer:1,person:'dolmen_builder',explain:'빗살무늬토기는 신석기 시대의 대표적인 토기예요!'},
+    {id:11,type:'ox',q:'구석기 시대 사람들은 농사를 지었다.',answer:false,person:'iron_master',explain:'구석기 시대 사람들은 사냥과 채집으로 살았어요. 농사는 신석기 시대부터 시작되었답니다!'},
+    {id:12,type:'4choice',q:'신석기 시대에 사용한 돌 도구는?',options:['뗀석기','간석기','청동기','철기'],answer:1,person:'dolmen_builder',explain:'신석기 시대에는 돌을 갈아서 만든 간석기를 사용했어요!'},
+    {id:13,type:'fill',q:'단군왕검이 고조선을 세운 해는 기원전 ○○○○년이에요.',answer:['2333'],person:'gojoseon_king',explain:'기원전 2333년은 개천절의 유래가 되는 고조선 건국 연도예요!'},
+    {id:14,type:'ox',q:'청동기 시대에는 계급사회가 나타났다.',answer:true,person:'dolmen_builder',explain:'청동기 시대부터 지배층과 피지배층으로 나누어지는 계급사회가 시작되었어요!'},
+    {id:15,type:'4choice',q:'기자조선을 세운 인물은?',options:['단군','기자','위만','준왕'],answer:1,person:'gija',explain:'중국 상나라의 현자 기자가 조선에 와서 기자조선을 세웠다고 전해져요!'},
+    {id:16,type:'ox',q:'철기 시대에는 덩이쇠가 화폐로 사용되었다.',answer:true,person:'iron_master',explain:'철기 시대에는 일정한 모양으로 만든 덩이쇠를 화폐처럼 사용했어요!'},
+    {id:17,type:'4choice',q:'웅녀가 사람이 되기 위해 먹은 것은?',options:['쑥과 마늘','쌀과 보리','고기와 생선','과일과 나무껍질'],answer:0,person:'ungnyeo',explain:'웅녀는 100일 동안 쑥과 마늘만 먹고 사람이 되어 단군의 어머니가 되었어요!'},
+    {id:18,type:'fill',q:'온조의 형으로 미추홀에 정착한 인물은 ○○이에요.',answer:['비류'],person:'biryu',explain:'비류는 온조의 형으로 미추홀(지금의 인천)에 정착했어요!'},
+    {id:19,type:'ox',q:'고조선에는 8조법이 있었다.',answer:true,person:'gojoseon_king',explain:'고조선에는 살인, 상해, 절도 등을 다룬 8조법이 있었어요!'},
+    {id:20,type:'4choice',q:'신석기 시대 집의 특징은?',options:['움집','기와집','초가집','한옥'],answer:0,person:'dolmen_builder',explain:'신석기 시대에는 땅을 파서 만든 움집에서 살았어요!'},
+    {id:21,type:'ox',q:'위만조선은 중국과 교역을 금지했다.',answer:false,person:'wiman',explain:'위만조선은 중국과 남쪽 여러 나라 사이의 중계무역으로 발전했어요!'},
+    {id:22,type:'4choice',q:'고인돌이 가장 많이 남아있는 곳은?',options:['강화도','제주도','울릉도','독도'],answer:0,person:'dolmen_builder',explain:'강화도에는 120여 개의 고인돌이 있어 세계문화유산으로 지정되었어요!'},
+    {id:23,type:'fill',q:'청동기 시대의 대표적인 농기구는 ○○○이에요.',answer:['반달돌칼','반달칼'],person:'dolmen_builder',explain:'반달돌칼은 벼이삭을 자르는 데 사용한 청동기 시대 농기구예요!'},
+    {id:24,type:'ox',q:'구석기 시대 사람들은 불을 사용할 줄 몰랐다.',answer:false,person:'iron_master',explain:'구석기 시대 사람들도 불을 사용할 줄 알았어요. 동굴 벽화도 그려서 남겼답니다!'},
+    {id:25,type:'4choice',q:'고조선의 마지막 왕은?',options:['단군왕검','기자','위만','준왕'],answer:3,person:'wiman',explain:'준왕은 위만에게 왕위를 빼앗긴 고조선의 마지막 왕이에요!'}
   ],
   samguk: [
     {id:1,type:'4choice',q:'고구려를 세운 사람은 누구일까요? 🏹',options:['주몽','온조','혁거세','김수로'],answer:0,person:'jumong',explain:'주몽은 부여에서 내려와 고구려를 세웠어요. 활을 잘 쏴서 "주몽"이라는 이름이 붙었답니다!'},
     {id:2,type:'4choice',q:'백제를 세운 사람은 누구일까요?',options:['박혁거세','김수로','온조','주몽'],answer:2,person:'onjo',explain:'온조는 주몽의 아들로, 남쪽으로 내려와 위례성에 백제를 세웠어요.'},
     {id:3,type:'ox',q:'광개토대왕은 신라의 왕이다.',answer:false,person:'gwanggaeto',explain:'광개토대왕은 고구려의 왕이에요! 고구려의 영토를 크게 넓힌 위대한 왕이랍니다.'},
-    {id:4,type:'4choice',q:'신라에서 만든, 별을 관찰하는 건물의 이름은?',options:['석굴암','첨성대','황룡사','불국사'],answer:1,person:'munmu',explain:'첨성대는 선덕여왕 때 만들어진 동양에서 가장 오래된 천문 관측대예요! ⭐'},
+    {id:4,type:'4choice',q:'신라에서 만든, 별을 관찰하는 건물의 이름은?',options:['석굴암','첨성대','황룡사','불국사'],answer:1,person:'seondeok',explain:'첨성대는 선덕여왕 때 만들어진 동양에서 가장 오래된 천문 관측대예요! ⭐'},
     {id:5,type:'4choice',q:'고구려 장수왕이 수도를 옮긴 곳은 어디일까요?',options:['한양','국내성','평양','부여'],answer:2,person:'jangsu',explain:'장수왕은 수도를 국내성에서 평양으로 옮겨 남쪽으로 영토를 넓히려 했어요.'},
-    {id:6,type:'ox',q:'을지문덕은 백제의 장군이다.',answer:false,person:'gwanggaeto',explain:'을지문덕은 고구려의 장군으로 살수대첩의 영웅이에요!'},
+    {id:6,type:'ox',q:'을지문덕은 백제의 장군이다.',answer:false,person:'eulji_mundeok',explain:'을지문덕은 고구려의 장군으로 살수대첩의 영웅이에요!'},
     {id:7,type:'order',q:'다음 나라가 세워진 순서대로 놓아보세요! 🏯',items:['고구려','백제','신라','가야'],correctOrder:[0,1,2,3],person:'jumong',explain:'고구려(BC 37) → 백제(BC 18) → 신라(BC 57이지만 발전은 늦음) → 가야(42). 삼국 중 고구려가 가장 먼저 세워졌어요!'},
     {id:8,type:'4choice',q:'백제의 전성기를 이끈 왕으로, 마한을 통합한 왕은?',options:['의자왕','무령왕','근초고왕','성왕'],answer:2,person:'geunchogo',explain:'근초고왕은 마한 전체를 통합하고 해외까지 진출한 백제 전성기의 왕이에요! 🛡️'},
     {id:9,type:'fill',q:'고구려, 백제, 신라를 합쳐서 "○○"이라고 불러요.',answer:['삼국','삼국시대'],person:'jumong',explain:'고구려·백제·신라 세 나라를 합쳐 "삼국"이라고 부르고, 이 시기를 삼국시대라고 해요!'},
     {id:10,type:'ox',q:'광개토대왕릉비는 백제에 있다.',answer:false,person:'gwanggaeto',explain:'광개토대왕릉비는 지금의 중국 지린성(만주)에 있어요. 고구려 영토였던 곳이랍니다!'},
-    {id:11,type:'4choice',q:'가야의 시조는 누구인가요?',options:['박혁거세','김수로','온조','주몽'],answer:1,person:'onjo',explain:'김수로왕은 가야(금관가야)의 시조로 전해져요!'},
-    {id:12,type:'4choice',q:'한강 유역을 차지한 신라의 왕은?',options:['내물왕','눌지왕','진흥왕','진평왕'],answer:2,person:'munmu',explain:'진흥왕은 한강 유역을 차지하고 순수비를 세웠어요!'}
+    {id:11,type:'4choice',q:'가야의 시조는 누구인가요?',options:['박혁거세','김수로','온조','주몽'],answer:1,person:'kim_suro',explain:'김수로왕은 가야(금관가야)의 시조로 전해져요!'},
+    {id:12,type:'4choice',q:'한강 유역을 차지한 신라의 왕은?',options:['내물왕','눌지왕','진흥왕','진평왕'],answer:2,person:'seondeok',explain:'진흥왕은 한강 유역을 차지하고 순수비를 세웠어요!'},
+    {id:13,type:'ox',q:'신라의 첫 번째 왕은 박혁거세이다.',answer:true,person:'park_hyeokgeose',explain:'박혁거세는 신라의 첫 번째 왕으로 알에서 태어났다고 전해져요!'},
+    {id:14,type:'4choice',q:'살수대첩에서 수나라를 물리친 고구려 장군은?',options:['을지문덕','연개소문','강감찬','윤관'],answer:0,person:'eulji_mundeok',explain:'을지문덕이 살수(청천강)에서 수나라 대군을 크게 물리쳤어요!'},
+    {id:15,type:'fill',q:'신라 최초의 여왕은 ○○여왕이에요.',answer:['선덕'],person:'seondeok',explain:'선덕여왕은 신라 최초의 여왕으로 첨성대와 황룡사 9층탑을 만들었어요!'},
+    {id:16,type:'ox',q:'고구려의 수도는 처음부터 평양이었다.',answer:false,person:'jangsu',explain:'고구려의 수도는 졸본 → 국내성 → 평양 순서로 옮겨갔어요!'},
+    {id:17,type:'4choice',q:'백제가 수도를 옮긴 순서는?',options:['위례성→공주→부여','공주→위례성→부여','위례성→부여→공주','부여→공주→위례성'],answer:0,person:'onjo',explain:'백제는 위례성 → 웅진(공주) → 사비(부여) 순서로 수도를 옮겼어요!'},
+    {id:18,type:'ox',q:'신라에는 골품제라는 신분제도가 있었다.',answer:true,person:'park_hyeokgeose',explain:'신라에는 태어날 때부터 신분이 정해지는 골품제가 있었어요!'},
+    {id:19,type:'4choice',q:'고구려 연개소문이 죽인 왕은?',options:['영양왕','영류왕','보장왕','고국원왕'],answer:1,person:'eulji_mundeok',explain:'연개소문은 영류왕을 죽이고 보장왕을 세워 권력을 장악했어요!'},
+    {id:20,type:'fill',q:'가야연맹의 중심국은 ○○가야였어요.',answer:['금관'],person:'kim_suro',explain:'금관가야는 김해 지역에 있던 가야연맹의 중심국이었어요!'},
+    {id:21,type:'ox',q:'백제는 중국, 일본과 활발하게 교류했다.',answer:true,person:'geunchogo',explain:'백제는 바다를 이용해 중국, 일본과 활발하게 문화 교류를 했어요!'},
+    {id:22,type:'4choice',q:'신라 진덕여왕 다음에 즉위한 왕은?',options:['문무왕','태종무열왕','선덕여왕','진평왕'],answer:1,person:'jindeok',explain:'진덕여왕 다음에는 태종무열왕이 즉위했어요!'},
+    {id:23,type:'ox',q:'고구려는 중국과 한 번도 전쟁을 하지 않았다.',answer:false,person:'gwanggaeto',explain:'고구려는 수나라, 당나라와 여러 차례 큰 전쟁을 벌였어요!'},
+    {id:24,type:'4choice',q:'삼국 중 가장 먼저 멸망한 나라는?',options:['고구려','백제','신라','가야'],answer:3,person:'kim_suro',explain:'가야는 562년에 신라에게 멸망해서 삼국보다 먼저 사라졌어요!'},
+    {id:25,type:'fill',q:'고구려 광개토대왕의 아들은 ○○왕이에요.',answer:['장수'],person:'jangsu',explain:'장수왕은 광개토대왕의 아들로 79년이나 왕위에 있었어요!'}
   ],
   unified: [
     {id:1,type:'4choice',q:'삼국통일을 완성한 신라의 왕은?',options:['무열왕','문무왕','신문왕','진평왕'],answer:1,person:'munmu',explain:'문무왕이 백제와 고구려를 멸망시키고 당나라까지 축출하여 삼국통일을 완성했어요!'},
     {id:2,type:'4choice',q:'발해를 건국한 사람은?',options:['연개소문','대조영','궁예','견훤'],answer:1,person:'dae_joyeong',explain:'대조영이 고구려 유민과 말갈족을 이끌고 발해를 건국했어요!'},
     {id:3,type:'ox',q:'원효대사는 불교를 어렵게만 가르쳤다.',answer:false,person:'wonhyo',explain:'원효대사는 어려운 불교를 일반 백성들도 쉽게 이해하도록 대중화했어요!'},
-    {id:4,type:'4choice',q:'발해의 전성기를 이룬 왕은?',options:['대조영','대무예','대인수','선왕'],answer:3,person:'dae_joyeong',explain:'선왕 때 발해는 "해동성국"이라 불릴 정도로 전성기를 누렸어요!'},
+    {id:4,type:'4choice',q:'발해의 전성기를 이룬 왕은?',options:['대조영','대무예','대인수','선왕'],answer:3,person:'dae_inseon',explain:'선왕 때 발해는 "해동성국"이라 불릴 정도로 전성기를 누렸어요!'},
     {id:5,type:'fill',q:'청해진을 설치하고 해상무역을 장악한 인물은 ○○○이에요.',answer:['장보고'],person:'jang_bogo',explain:'장보고는 청해진을 근거지로 동아시아 해상무역을 장악한 해상왕이었어요!'},
     {id:6,type:'ox',q:'통일신라는 한반도 전체를 차지했다.',answer:false,person:'munmu',explain:'통일신라는 대동강 이남만 차지했고, 이북은 발해가 차지했어요!'},
     {id:7,type:'4choice',q:'화엄사상을 전파한 고승은?',options:['원효','의상','혜초','자장'],answer:1,person:'uisang',explain:'의상대사는 당나라에서 화엄사상을 배워와 전파했어요!'},
     {id:8,type:'order',q:'다음 신라 왕들을 순서대로 배열하세요!',items:['무열왕','문무왕','신문왕','성덕왕'],correctOrder:[0,1,2,3],person:'munmu',explain:'무열왕 → 문무왕 → 신문왕 → 성덕왕 순으로 통일신라 초기를 이끌었어요!'},
     {id:9,type:'ox',q:'발해는 고구려를 계승한 나라이다.',answer:true,person:'dae_joyeong',explain:'발해는 고구려 유민이 세운 나라로 고구려를 계승했다고 여겨져요!'},
-    {id:10,type:'4choice',q:'불국사와 석굴암을 만든 신라의 재상은?',options:['김유신','김춘추','김대성','장보고'],answer:2,person:'munmu',explain:'김대성이 불국사와 석굴암 건립을 주도했어요!'}
+    {id:10,type:'4choice',q:'불국사와 석굴암을 만든 신라의 재상은?',options:['김유신','김춘추','김대성','장보고'],answer:2,person:'munmu',explain:'김대성이 불국사와 석굴암 건립을 주도했어요!'},
+    {id:11,type:'ox',q:'신라에는 9서당과 6정이 있었다.',answer:true,person:'munmu',explain:'통일신라는 9서당(중앙군)과 6정(지방군)을 두어 국방을 강화했어요!'},
+    {id:12,type:'4choice',q:'발해의 수도는 어디였나요?',options:['상경 용천부','중경 현덕부','동경 용원부','서경 압록부'],answer:0,person:'dae_joyeong',explain:'발해의 수도는 상경 용천부(지금의 헤이룽장성)였어요!'},
+    {id:13,type:'fill',q:'통일신라 시대 골품제에서 가장 높은 신분은 ○골이에요.',answer:['성골'],person:'seondeok',explain:'성골은 왕족만 될 수 있는 최고 신분이었어요!'},
+    {id:14,type:'ox',q:'원효대사는 결혼하지 않았다.',answer:false,person:'wonhyo',explain:'원효대사는 요석공주와 결혼해서 설총을 낳았어요!'},
+    {id:15,type:'4choice',q:'신라 진성여왕 때 일어난 농민봉기 지도자는?',options:['견훤','궁예','원종과 애노','김헌창'],answer:2,person:'seondeok',explain:'원종과 애노가 이끈 농민봉기가 신라 말기에 일어났어요!'},
+    {id:16,type:'ox',q:'발해는 당나라와 한 번도 전쟁하지 않았다.',answer:false,person:'dae_joyeong',explain:'발해는 건국 과정에서 당나라와 치열하게 싸웠어요!'},
+    {id:17,type:'4choice',q:'신라의 수도 경주에 있는 안압지는 언제 만들어졌나요?',options:['통일 전','통일 직후','신라 말기','고려 초기'],answer:1,person:'munmu',explain:'안압지는 문무왕 때 만들어진 궁궐 내 연못이에요!'},
+    {id:18,type:'fill',q:'발해 문왕의 이름은 대○○이에요.',answer:['인수'],person:'dae_inseon',explain:'대인수는 발해 3대 왕으로 문왕이라고 불렸어요!'},
+    {id:19,type:'ox',q:'장보고는 신라 말기 인물이다.',answer:false,person:'jang_bogo',explain:'장보고는 통일신라 중기(9세기 전반) 활동한 인물이에요!'},
+    {id:20,type:'4choice',q:'신라 하대에 나타난 6두품 출신 인물은?',options:['최치원','설총','강수','김대성'],answer:0,person:'seondeok',explain:'최치원은 6두품 출신으로 당나라에서 과거에 급제한 대표적 인물이에요!'},
+    {id:21,type:'ox',q:'발해는 거란(요)에 의해 멸망했다.',answer:true,person:'dae_joyeong',explain:'발해는 926년 거란(요)에 의해 멸망했어요!'},
+    {id:22,type:'4choice',q:'석굴암 본존불상의 특징은?',options:['서 있는 모습','앉아 있는 모습','누워 있는 모습','걷고 있는 모습'],answer:1,person:'munmu',explain:'석굴암 본존불은 항마촉지인을 한 앉아 있는 석가여래상이에요!'},
+    {id:23,type:'fill',q:'신라에서 ○품 이상이어야 자주색 옷을 입을 수 있었어요.',answer:['4','사'],person:'seondeok',explain:'골품제에서 4두품 이상이 되어야 자주색 관복을 입을 수 있었어요!'},
+    {id:24,type:'ox',q:'발해에서는 유교, 불교, 도교를 모두 받아들였다.',answer:true,person:'dae_joyeong',explain:'발해는 유교, 불교, 도교를 고루 받아들인 개방적인 문화를 가지고 있었어요!'},
+    {id:25,type:'4choice',q:'신라 말기 선종 불교를 도입한 대표적 인물은?',options:['원효','의상','도의','자장'],answer:2,person:'wonhyo',explain:'도의는 당나라에서 선종을 배워와 신라에 전파한 인물이에요!'}
   ],
   goryeo: [
     {id:1,type:'4choice',q:'고려를 건국한 사람은?',options:['궁예','견훤','왕건','기준'],answer:2,person:'wang_geon',explain:'왕건이 후삼국을 통일하고 고려를 건국했어요!'},
     {id:2,type:'4choice',q:'거란의 침입을 외교로 해결한 인물은?',options:['서희','강감찬','윤관','김부식'],answer:0,person:'seo_hui',explain:'서희가 소손녕과의 담판으로 거란 1차 침입을 막고 강동 6주를 얻었어요!'},
     {id:3,type:'4choice',q:'귀주대첩의 영웅은?',options:['을지문덕','연개소문','강감찬','윤관'],answer:2,person:'gang_gam_chan',explain:'강감찬이 귀주대첩에서 거란군을 크게 물리쳤어요!'},
     {id:4,type:'ox',q:'고려는 불교 국가였다.',answer:true,person:'wang_geon',explain:'고려는 불교를 국교로 하는 불교 국가였어요!'},
-    {id:5,type:'4choice',q:'무신정변의 중심인물은?',options:['정중부','이의방','최충헌','경대승'],answer:2,person:'choi_chung_heon',explain:'최충헌이 무신정변을 주도하고 무신정권을 확립했어요!'},
+    {id:5,type:'4choice',q:'무신정변의 중심인물은?',options:['정중부','이의방','최충헌','경대승'],answer:0,person:'jung_jung_bu',explain:'정중부가 무신정변을 일으켰고, 나중에 최충헌이 무신정권을 확립했어요!'},
     {id:6,type:'fill',q:'고려의 수도는 ○○이었어요.',answer:['개경','개성'],person:'wang_geon',explain:'고려의 수도는 개경(지금의 개성)이었어요!'},
-    {id:7,type:'4choice',q:'고구려 부흥을 꿈꾸며 후고구려를 세운 인물은?',options:['궁예','견훤','양길','기준'],answer:0,person:'wang_geon',explain:'궁예가 후고구려(나중에 마진, 태봉)를 세웠어요!'},
+    {id:7,type:'4choice',q:'고구려 부흥을 꿈꾸며 후고구려를 세운 인물은?',options:['궁예','견훤','양길','기준'],answer:0,person:'gung_ye',explain:'궁예가 후고구려(나중에 마진, 태봉)를 세웠어요!'},
     {id:8,type:'ox',q:'고려는 몽골(원)의 침입을 완전히 막아냈다.',answer:false,person:'choi_chung_heon',explain:'고려는 몽골 침입에 강화도로 피난했고, 결국 원의 속국이 되었어요.'},
     {id:9,type:'4choice',q:'고려 광종이 실시한 정책은?',options:['과거제 도입','노예안검법','연분9등법','녹읍 폐지'],answer:1,person:'sejong_goryeo',explain:'광종은 노예안검법으로 호족 세력을 약화시켰어요!'},
     {id:10,type:'order',q:'고려 전기 거란 침입 순서대로 배열하세요!',items:['1차 침입','2차 침입','3차 침입'],correctOrder:[0,1,2],person:'seo_hui',explain:'993년 1차, 1010년 2차, 1018년 3차 침입이 있었어요!'},
     {id:11,type:'ox',q:'팔만대장경은 고려시대에 만들어졌다.',answer:true,person:'wang_geon',explain:'팔만대장경(재조대장경)은 몽골 침입 때 부처의 힘을 빌리려고 만들었어요!'},
-    {id:12,type:'4choice',q:'동북 9성을 쌓은 고려의 장군은?',options:['서희','강감찬','윤관','김부식'],answer:2,person:'gang_gam_chan',explain:'윤관이 별무반을 이끌고 여진족을 물리치고 동북 9성을 쌓았어요!'}
+    {id:12,type:'4choice',q:'동북 9성을 쌓은 고려의 장군은?',options:['서희','강감찬','윤관','김부식'],answer:2,person:'yun_gwan',explain:'윤관이 별무반을 이끌고 여진족을 물리치고 동북 9성을 쌓았어요!'},
+    {id:13,type:'ox',q:'고려는 과거제를 실시했다.',answer:true,person:'sejong_goryeo',explain:'고려는 광종 때부터 과거제를 실시해서 인재를 등용했어요!'},
+    {id:14,type:'4choice',q:'고려 말 왜구의 침입을 막은 장군은?',options:['이성계','최영','최무선','정몽주'],answer:0,person:'wang_geon',explain:'이성계가 왜구를 물리치며 명성을 얻었고, 나중에 조선을 건국했어요!'},
+    {id:15,type:'fill',q:'고려 무신정권을 확립한 최씨 가문의 시조는 최○○이에요.',answer:['충헌'],person:'choi_chung_heon',explain:'최충헌이 무신정권을 확립하고 최씨 정권의 기초를 마련했어요!'},
+    {id:16,type:'ox',q:'고려청자는 고려만의 독창적인 기법으로 만들어졌다.',answer:true,person:'wang_geon',explain:'고려청자의 상감기법은 고려에서 독창적으로 개발한 기술이에요!'},
+    {id:17,type:'4choice',q:'고려 말 신돈의 개혁 정책은?',options:['전민변정도감 설치','정방 폐지','과거제 실시','노예안검법'],answer:0,person:'choi_chung_heon',explain:'신돈은 전민변정도감을 설치하여 불법으로 빼앗긴 토지와 노예를 되찾아주었어요!'},
+    {id:18,type:'ox',q:'고려는 몽골 침입 때 강화도에 천도했다.',answer:true,person:'choi_chung_heon',explain:'고려는 몽골 침입에 맞서 강화도로 천도하여 39년간 항쟁했어요!'},
+    {id:19,type:'4choice',q:'삼별초의 난을 일으킨 지도자는?',options:['배중손','김통정','승화후','모든 답이 맞음'],answer:3,person:'choi_chung_heon',explain:'삼별초는 배중손, 김통정 등이 차례로 이끌며 몽골에 끝까지 항거했어요!'},
+    {id:20,type:'fill',q:'고려시대 지방 행정구역은 ○도로 나누어져 있었어요.',answer:['5','오'],person:'wang_geon',explain:'고려는 전국을 5도로 나누어 지방을 다스렸어요!'},
+    {id:21,type:'ox',q:'고려는 원의 간섭기에 공민왕이 개혁을 시도했다.',answer:true,person:'wang_geon',explain:'공민왕은 원의 세력을 축출하고 개혁정치를 펼쳤어요!'},
+    {id:22,type:'4choice',q:'고려의 화폐는?',options:['통보','건원중보','동국통보','해동통보'],answer:2,person:'sejong_goryeo',explain:'고려에서는 동국통보, 해동통보 등의 화폐를 사용했어요!'},
+    {id:23,type:'ox',q:'고려시대에는 문벌 귀족이 지배층이었다.',answer:true,person:'sejong_goryeo',explain:'고려시대에는 문벌 귀족들이 정치를 독점했어요!'},
+    {id:24,type:'4choice',q:'고려사를 편찬한 인물은?',options:['김부식','일연','이규보','최충'],answer:0,person:'wang_geon',explain:'김부식은 삼국사기를 편찬해서 우리나라 최초의 정사를 완성했어요!'},
+    {id:25,type:'fill',q:'고려 말 신진사대부의 대표 인물은 ○○○이에요.',answer:['정도전'],person:'wang_geon',explain:'정도전은 신진사대부의 대표로 조선 건국에 큰 역할을 했어요!'}
   ],
   joseon_early: [
     {id:1,type:'4choice',q:'조선을 건국한 사람은?',options:['정도전','하륜','이성계','조준'],answer:2,person:'yi_seong_gye',explain:'이성계가 위화도 회군 후 조선을 건국했어요!'},
@@ -492,13 +568,26 @@ const QUESTIONS = {
     {id:3,type:'4choice',q:'조선 최고의 과학기술자는?',options:['장영실','김정호','이순신','허준'],answer:0,person:'jang_yeong_sil',explain:'장영실은 물시계, 해시계, 측우기 등을 만든 과학기술자였어요!'},
     {id:4,type:'ox',q:'경복궁은 조선 초기에 지어진 궁궐이다.',answer:true,person:'yi_seong_gye',explain:'경복궁은 조선 태조 때 지어진 조선의 법궁이에요!'},
     {id:5,type:'4choice',q:'성리학의 대가 퇴계는?',options:['이황','이이','조식','서경덕'],answer:0,person:'yi_hwang',explain:'퇴계 이황은 "동방의 주자"라 불린 성리학의 대가예요!'},
-    {id:6,type:'fill',q:'조선 전기 ○○의 변으로 계유정난이 일어났어요.',answer:['단종','계유'],person:'sejong',explain:'세조가 단종을 몰아내고 왕위를 차지한 사건이 계유정난이에요!'},
+    {id:6,type:'fill',q:'조선 전기 ○○의 변으로 계유정난이 일어났어요.',answer:['단종','계유'],person:'yi_bang_won',explain:'세조가 단종을 몰아내고 왕위를 차지한 사건이 계유정난이에요!'},
     {id:7,type:'4choice',q:'실용적 개혁을 주장한 율곡은?',options:['이황','이이','조식','서경덕'],answer:1,person:'yi_i',explain:'율곡 이이는 십만양병설 등 실용적 개혁을 주장했어요!'},
     {id:8,type:'ox',q:'훈민정음은 처음에 모든 사람이 환영했다.',answer:false,person:'sejong',explain:'훈민정음은 처음엔 양반들의 반대가 심했어요!'},
     {id:9,type:'order',q:'조선 전기 왕들을 순서대로 배열하세요!',items:['태조','태종','세종','문종'],correctOrder:[0,1,2,3],person:'yi_seong_gye',explain:'태조 → 태종 → 세종 → 문종 순서예요!'},
     {id:10,type:'4choice',q:'조선의 수도는?',options:['개성','평양','한양','부여'],answer:2,person:'yi_seong_gye',explain:'조선의 수도는 한양(지금의 서울)이었어요!'},
     {id:11,type:'ox',q:'집현전은 세종 때 설치되었다.',answer:true,person:'sejong',explain:'집현전은 세종이 학문 연구를 위해 설치한 기관이에요!'},
-    {id:12,type:'4choice',q:'조선 건국에 큰 역할을 한 학자는?',options:['정도전','권근','하륜','조준'],answer:0,person:'yi_seong_gye',explain:'정도전은 조선 건국의 설계자로 불려요!'}
+    {id:12,type:'4choice',q:'조선 건국에 큰 역할을 한 학자는?',options:['정도전','권근','하륜','조준'],answer:0,person:'jeong_do_jeon',explain:'정도전은 조선 건국의 설계자로 불려요!'},
+    {id:13,type:'ox',q:'조선은 숭불억유 정책을 폈다.',answer:false,person:'yi_seong_gye',explain:'조선은 억불숭유 정책으로 불교를 억압하고 유교를 중시했어요!'},
+    {id:14,type:'4choice',q:'세종 때 편찬한 농업 기술서는?',options:['농사직설','향약집성방','의방유취','동의보감'],answer:0,person:'sejong',explain:'농사직설은 우리나라 풍토에 맞는 농업 기술을 정리한 책이에요!'},
+    {id:15,type:'fill',q:'조선 태종의 이름은 이○○이에요.',answer:['방원'],person:'yi_bang_won',explain:'이방원은 조선 3대 왕 태종으로 왕권 강화에 힘썼어요!'},
+    {id:16,type:'ox',q:'조선 전기에는 과거제가 없었다.',answer:false,person:'sejong',explain:'조선은 고려의 과거제를 이어받아 문과, 무과, 잡과를 실시했어요!'},
+    {id:17,type:'4choice',q:'동의보감을 쓴 의원은?',options:['허준','이제마','유의태','전순의'],answer:0,person:'heo_jun',explain:'허준은 동의보감을 써서 전통 의학을 집대성했어요!'},
+    {id:18,type:'ox',q:'조선은 중국을 종주국으로 섬겼다.',answer:true,person:'yi_seong_gye',explain:'조선은 명나라를 종주국으로 섬기는 사대정책을 폈어요!'},
+    {id:19,type:'4choice',q:'세종 때 만든 세계 최초의 측우기는?',options:['우량계','강우량측정기','측우기','비측정기'],answer:2,person:'jang_yeong_sil',explain:'측우기는 장영실이 만든 세계 최초의 우량 측정 기구예요!'},
+    {id:20,type:'fill',q:'조선의 법전인 ○○대전이 성종 때 완성되었어요.',answer:['경국'],person:'sejong',explain:'경국대전은 조선 전기의 기본 법전이었어요!'},
+    {id:21,type:'ox',q:'조선 세종은 불교를 완전히 폐지했다.',answer:false,person:'sejong',explain:'세종은 불교를 억압했지만 완전히 폐지하지는 않았어요!'},
+    {id:22,type:'4choice',q:'조선 전기 지방 행정구역은?',options:['5도','8도','10도','12도'],answer:1,person:'yi_seong_gye',explain:'조선은 전국을 8도로 나누어 다스렸어요!'},
+    {id:23,type:'ox',q:'훈민정음 창제에는 집현전 학자들이 참여했다.',answer:true,person:'sejong',explain:'세종은 집현전 학자들과 함께 훈민정음을 연구하고 만들었어요!'},
+    {id:24,type:'4choice',q:'조선 초기 왜구를 토벌한 장군은?',options:['이성계','최영','이종무','정도전'],answer:2,person:'yi_seong_gye',explain:'이종무는 대마도를 정벌해서 왜구의 근거지를 소탕했어요!'},
+    {id:25,type:'fill',q:'조선 세종 때 설치한 최고 교육기관은 ○○○이에요.',answer:['성균관'],person:'sejong',explain:'성균관은 조선시대 최고 교육기관으로 유교 경전을 가르쳤어요!'}
   ],
   joseon_late: [
     {id:1,type:'4choice',q:'규장각을 설치한 조선 후기 왕은?',options:['영조','정조','순조','헌종'],answer:1,person:'sejong_late',explain:'정조가 규장각을 설치하고 문예부흥을 이끌었어요!'},
@@ -512,7 +601,20 @@ const QUESTIONS = {
     {id:9,type:'4choice',q:'수원 화성을 축조한 왕은?',options:['영조','정조','순조','고종'],answer:1,person:'sejong_late',explain:'정조가 아버지 사도세자를 위해 수원 화성을 축조했어요!'},
     {id:10,type:'order',q:'다음 개화기 사건을 순서대로 배열하세요!',items:['강화도조약','임오군란','갑신정변','갑오농민운동'],correctOrder:[0,1,2,3],person:'kim_ok_gyun',explain:'1876년 강화도조약 → 1882년 임오군란 → 1884년 갑신정변 → 1894년 갑오농민운동'},
     {id:11,type:'ox',q:'조선 후기에는 상업이 발달했다.',answer:true,person:'park_ji_won',explain:'조선 후기에는 상업과 수공업이 크게 발달했어요!'},
-    {id:12,type:'4choice',q:'대원군이 철거한 것은?',options:['향교','서당','서원','성균관'],answer:2,person:'heungseon',explain:'흥선대원군이 전국의 서원을 대거 철거했어요!'}
+    {id:12,type:'4choice',q:'대원군이 철거한 것은?',options:['향교','서당','서원','성균관'],answer:2,person:'heungseon',explain:'흥선대원군이 전국의 서원을 대거 철거했어요!'},
+    {id:13,type:'ox',q:'대동여지도는 김정호가 만들었다.',answer:true,person:'gim_jeong_ho',explain:'김정호는 22년간 전국을 답사하며 정밀한 대동여지도를 완성했어요!'},
+    {id:14,type:'4choice',q:'반계수록을 쓴 실학자는?',options:['유형원','박지원','홍대용','정약용'],answer:0,person:'yu_hyeong_won',explain:'반계 유형원은 실학의 아버지로 불리며 반계수록을 썼어요!'},
+    {id:15,type:'fill',q:'조선 후기 새로운 농법인 ○○법이 보급되었어요.',answer:['이모작'],person:'park_ji_won',explain:'이모작법이 보급되어 농업 생산력이 크게 증가했어요!'},
+    {id:16,type:'ox',q:'정조는 화성행궁에서 과거시험을 실시했다.',answer:true,person:'sejong_late',explain:'정조는 화성행궁에서 특별 과거시험을 실시해 인재를 발굴했어요!'},
+    {id:17,type:'4choice',q:'동학을 창시한 인물은?',options:['최제우','최시형','손병희','전봉준'],answer:0,person:'kim_ok_gyun',explain:'최제우(수운)가 동학을 창시하여 새로운 종교 운동을 일으켰어요!'},
+    {id:18,type:'ox',q:'흥선대원군은 경복궁을 중건했다.',answer:true,person:'heungseon',explain:'흥선대원군은 임진왜란으로 소실된 경복궁을 중건했어요!'},
+    {id:19,type:'4choice',q:'정약용이 발명한 건설 기계는?',options:['거중기','측우기','앙부일구','자격루'],answer:0,person:'jeong_yag_yong',explain:'정약용은 무거운 돌을 쉽게 옮길 수 있는 거중기를 발명했어요!'},
+    {id:20,type:'fill',q:'조선 후기 ○○○ 농민운동이 전라도에서 일어났어요.',answer:['홍경래'],person:'heungseon',explain:'1811년 홍경래의 난이 평안도에서 일어났어요!'},
+    {id:21,type:'ox',q:'조선 후기에는 양반 인구가 크게 늘어났다.',answer:true,person:'park_ji_won',explain:'조선 후기에는 양반 인구가 전체의 70%까지 늘어났어요!'},
+    {id:22,type:'4choice',q:'강화도조약을 맺은 해는?',options:['1875년','1876년','1877년','1878년'],answer:1,person:'kim_ok_gyun',explain:'1876년에 일본과 강화도조약을 맺어 조선이 개항했어요!'},
+    {id:23,type:'ox',q:'실학자들은 모두 양반 출신이었다.',answer:false,person:'jeong_yag_yong',explain:'실학자 중에는 중인이나 서얼 출신도 많았어요!'},
+    {id:24,type:'4choice',q:'조선 후기 상품화폐로 사용된 것은?',options:['동전','은화','상평통보','무명'],answer:2,person:'park_ji_won',explain:'상평통보는 조선 후기 주요 화폐로 사용되었어요!'},
+    {id:25,type:'fill',q:'정조가 설치한 왕실 도서관은 ○○○이에요.',answer:['규장각'],person:'sejong_late',explain:'규장각은 정조가 설치한 왕실 도서관이자 학술 연구 기관이었어요!'}
   ],
   modern: [
     {id:1,type:'4choice',q:'이토 히로부미를 처단한 의사는?',options:['안중근','윤봉길','이봉창','김상옥'],answer:0,person:'an_jung_geun',explain:'안중근 의사가 하얼빈에서 이토 히로부미를 저격했어요!'},
@@ -526,7 +628,20 @@ const QUESTIONS = {
     {id:9,type:'4choice',q:'4.19 혁명이 일어난 해는?',options:['1948','1950','1960','1961'],answer:2,person:'syngman_rhee',explain:'1960년 4월 19일 학생들이 이승만 정권에 맞서 일어났어요!'},
     {id:10,type:'order',q:'다음 사건을 시간 순으로 배열하세요!',items:['광복','정부수립','6.25전쟁','4.19혁명'],correctOrder:[0,1,2,3],person:'kim_gu',explain:'1945년 광복 → 1948년 정부수립 → 1950년 6.25전쟁 → 1960년 4.19혁명'},
     {id:11,type:'ox',q:'88올림픽은 서울에서 열렸다.',answer:true,person:'park_chung_hee',explain:'1988년 서울올림픽이 성공적으로 개최되었어요!'},
-    {id:12,type:'4choice',q:'일제강점기가 시작된 해는?',options:['1905','1910','1919','1945'],answer:1,person:'an_jung_geun',explain:'1910년 한일강제병합으로 일제강점기가 시작되었어요!'}
+    {id:12,type:'4choice',q:'일제강점기가 시작된 해는?',options:['1905','1910','1919','1945'],answer:1,person:'an_jung_geun',explain:'1910년 한일강제병합으로 일제강점기가 시작되었어요!'},
+    {id:13,type:'ox',q:'윤봉길 의사는 중국에서 의거를 일으켰다.',answer:true,person:'yun_bong_gil',explain:'윤봉길 의사는 상하이 홍커우 공원에서 의거를 일으켰어요!'},
+    {id:14,type:'4choice',q:'한인애국단을 조직한 인물은?',options:['김구','안창호','이승만','신채호'],answer:0,person:'kim_gu',explain:'김구가 한인애국단을 조직하여 의열투쟁을 전개했어요!'},
+    {id:15,type:'fill',q:'일제강점기는 ○○년간 지속되었어요.',answer:['35','삼십오'],person:'an_jung_geun',explain:'1910년부터 1945년까지 35년간 일제강점기였어요!'},
+    {id:16,type:'ox',q:'이봉창 의사는 일왕 저격에 성공했다.',answer:false,person:'lee_bong_chang',explain:'이봉창 의사는 일왕 저격을 시도했지만 실패했어요!'},
+    {id:17,type:'4choice',q:'도산 안창호가 만든 단체는?',options:['신민회','흥사단','독립협회','보안회'],answer:1,person:'ahn_chang_ho',explain:'안창호는 흥사단을 만들어 교육을 통한 실력양성을 추진했어요!'},
+    {id:18,type:'ox',q:'5.16 군사정변은 1961년에 일어났다.',answer:true,person:'park_chung_hee',explain:'1961년 5월 16일에 박정희가 군사정변을 일으켰어요!'},
+    {id:19,type:'4choice',q:'한일기본조약이 체결된 해는?',options:['1964년','1965년','1966년','1967년'],answer:1,person:'park_chung_hee',explain:'1965년에 한일기본조약이 체결되어 한일 국교가 정상화되었어요!'},
+    {id:20,type:'fill',q:'1987년 민주화운동을 ○○민주항쟁이라고 해요.',answer:['6월'],person:'syngman_rhee',explain:'1987년 6월 민주항쟁으로 민주화가 이루어졌어요!'},
+    {id:21,type:'ox',q:'대한민국은 1988년 올림픽을 개최했다.',answer:true,person:'park_chung_hee',explain:'1988년 서울올림픽은 한국의 국제적 위상을 높였어요!'},
+    {id:22,type:'4choice',q:'3.1운동이 일어난 해는?',options:['1918년','1919년','1920년','1921년'],answer:1,person:'yu_gwan_sun',explain:'1919년 3월 1일에 독립 만세 운동이 전국적으로 일어났어요!'},
+    {id:23,type:'ox',q:'김구는 교육을 통한 독립운동을 주장했다.',answer:false,person:'kim_gu',explain:'김구는 무력투쟁을 통한 독립운동을 주장했어요. 교육론은 안창호였어요!'},
+    {id:24,type:'4choice',q:'일제강점기 토지조사사업의 목적은?',options:['농민 보호','근대적 토지소유권 확립','농업 발전','교육 진흥'],answer:1,person:'an_jung_geun',explain:'토지조사사업은 근대적 토지소유권을 확립한다는 명목으로 토지를 수탈했어요!'},
+    {id:25,type:'fill',q:'2002년 한일 월드컵의 한국 최종 성적은 ○위였어요.',answer:['4','사'],person:'park_chung_hee',explain:'2002년 한일 월드컵에서 한국은 4위를 기록해 전 국민을 열광시켰어요!'}
   ]
 };
 
@@ -572,834 +687,3 @@ function playSound(type){
     const o=ctx.createOscillator();
     o.connect(g);
     
-    if(type==='correct'){
-      // 밝은 두 음 (도-미)
-      o.type='sine';
-      o.frequency.setValueAtTime(523,ctx.currentTime);
-      o.frequency.setValueAtTime(659,ctx.currentTime+0.1);
-      g.gain.setValueAtTime(0.3,ctx.currentTime);
-      g.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.3);
-      o.start(ctx.currentTime);
-      o.stop(ctx.currentTime+0.3);
-    } else if(type==='wrong'){
-      // 낮은 버저음
-      o.type='square';
-      o.frequency.setValueAtTime(200,ctx.currentTime);
-      o.frequency.setValueAtTime(150,ctx.currentTime+0.15);
-      g.gain.setValueAtTime(0.2,ctx.currentTime);
-      g.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.35);
-      o.start(ctx.currentTime);
-      o.stop(ctx.currentTime+0.35);
-    } else if(type==='levelup'){
-      // 상승 아르페지오 (도-미-솔-도)
-      const notes=[523,659,784,1047];
-      notes.forEach((freq,i)=>{
-        const oo=ctx.createOscillator();
-        const gg=ctx.createGain();
-        oo.connect(gg); gg.connect(ctx.destination);
-        oo.type='sine';
-        oo.frequency.value=freq;
-        gg.gain.setValueAtTime(0.25,ctx.currentTime+i*0.12);
-        gg.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+i*0.12+0.3);
-        oo.start(ctx.currentTime+i*0.12);
-        oo.stop(ctx.currentTime+i*0.12+0.3);
-      });
-      return;
-    } else if(type==='star'){
-      // 반짝 효과음
-      o.type='sine';
-      o.frequency.setValueAtTime(880,ctx.currentTime);
-      o.frequency.setValueAtTime(1100,ctx.currentTime+0.05);
-      o.frequency.setValueAtTime(1320,ctx.currentTime+0.1);
-      g.gain.setValueAtTime(0.2,ctx.currentTime);
-      g.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.2);
-      o.start(ctx.currentTime);
-      o.stop(ctx.currentTime+0.2);
-    } else if(type==='combo'){
-      // 콤보 효과 (빠른 상승음)
-      o.type='sawtooth';
-      o.frequency.setValueAtTime(400,ctx.currentTime);
-      o.frequency.exponentialRampToValueAtTime(1200,ctx.currentTime+0.15);
-      g.gain.setValueAtTime(0.15,ctx.currentTime);
-      g.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.2);
-      o.start(ctx.currentTime);
-      o.stop(ctx.currentTime+0.2);
-    } else if(type==='click'){
-      // 클릭음
-      o.type='sine';
-      o.frequency.value=800;
-      g.gain.setValueAtTime(0.15,ctx.currentTime);
-      g.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.05);
-      o.start(ctx.currentTime);
-      o.stop(ctx.currentTime+0.05);
-    } else if(type==='timeout'){
-      // 시간초과
-      o.type='triangle';
-      o.frequency.setValueAtTime(300,ctx.currentTime);
-      o.frequency.setValueAtTime(200,ctx.currentTime+0.2);
-      g.gain.setValueAtTime(0.25,ctx.currentTime);
-      g.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.4);
-      o.start(ctx.currentTime);
-      o.stop(ctx.currentTime+0.4);
-    } else if(type==='complete'){
-      // 스테이지 클리어 팡파레
-      const melody=[523,659,784,1047,784,1047];
-      melody.forEach((freq,i)=>{
-        const oo=ctx.createOscillator();
-        const gg=ctx.createGain();
-        oo.connect(gg); gg.connect(ctx.destination);
-        oo.type='sine';
-        oo.frequency.value=freq;
-        gg.gain.setValueAtTime(0.25,ctx.currentTime+i*0.15);
-        gg.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+i*0.15+0.25);
-        oo.start(ctx.currentTime+i*0.15);
-        oo.stop(ctx.currentTime+i*0.15+0.25);
-      });
-      return;
-    }
-  } catch(e){}
-}
-
-// ==================== UTILITIES ====================
-function shuffle(arr){
-  const a=[...arr];
-  for(let i=a.length-1;i>0;i--){
-    const j=Math.floor(Math.random()*(i+1));
-    [a[i],a[j]]=[a[j],a[i]];
-  }
-  return a;
-}
-
-function getTitle(lv){
-  let t=TITLES[0].title;
-  for(const ti of TITLES) if(lv>=ti.level) t=ti.title;
-  return t;
-}
-
-function getTotalProgress(){
-  const totalStages=STAGES.length;
-  const completedStages=STAGES.filter(s=>save.stageStars[s.id]>0).length;
-  return Math.round(completedStages/totalStages*100);
-}
-
-function getTotalStars(){
-  return Object.values(save.stageStars).reduce((sum,stars)=>sum+stars,0);
-}
-
-// ==================== EFFECTS ====================
-function createStarEffect(){
-  const container=document.getElementById('effect-stars');
-  for(let i=0;i<8;i++){
-    const star=document.createElement('div');
-    star.className='falling-star';
-    star.textContent='⭐';
-    star.style.left=Math.random()*100+'%';
-    star.style.animationDelay=i*0.2+'s';
-    container.appendChild(star);
-    setTimeout(()=>star.remove(),2500);
-  }
-}
-
-function createCelebrationEmoji(emoji){
-  const cel=document.createElement('div');
-  cel.className='celebration-emoji';
-  cel.textContent=emoji;
-  cel.style.left=Math.random()*80+10+'%';
-  cel.style.top=Math.random()*60+20+'%';
-  document.body.appendChild(cel);
-  setTimeout(()=>cel.remove(),1500);
-}
-
-function showCombo(count){
-  const combo=document.getElementById('combo-counter');
-  combo.textContent=`🔥 콤보 x${count}`;
-  combo.style.display='block';
-  setTimeout(()=>combo.style.display='none',1500);
-}
-
-// ==================== SCREENS ====================
-function showScreen(id){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  
-  if(id==='main-screen') updateMainScreen();
-  if(id==='stage-screen') renderStages();
-  if(id==='collection-screen') renderCollection();
-  if(id==='wrong-screen') renderWrongNotes();
-  if(id==='ranking-screen') renderRankings();
-}
-
-function updateMainScreen(){
-  const info=document.getElementById('main-player-info');
-  const stats=document.getElementById('progress-stats');
-  
-  if(save.level>0){
-    info.style.display='flex';
-    stats.style.display='flex';
-    document.getElementById('main-level').textContent='Lv.'+save.level;
-    document.getElementById('main-title').textContent=getTitle(save.level);
-    document.getElementById('main-stars').textContent=getTotalStars();
-    document.getElementById('total-progress').textContent=getTotalProgress()+'%';
-    document.getElementById('total-stars-count').textContent=getTotalStars();
-  }
-}
-
-function renderStages(){
-  const map=document.getElementById('stage-map');
-  map.innerHTML='';
-  
-  STAGES.forEach((stage,i)=>{
-    const isUnlocked=i===0||save.stageStars[STAGES[i-1].id]>0;
-    const stars=save.stageStars[stage.id]||0;
-    const progress=save.stageProgress[stage.id]||0;
-    const maxStars=stage.maxQuestions*3;
-    
-    let starDisplay='';
-    if(isUnlocked&&stars>0){
-      const starCount=Math.min(3,Math.ceil(stars/(maxStars/3)));
-      starDisplay='⭐'.repeat(starCount);
-    }
-    
-    const cardClass=['stage-card'];
-    if(!isUnlocked) cardClass.push('locked');
-    if(stars>0) cardClass.push('completed');
-    
-    const stageHtml=`
-      <div class="${cardClass.join(' ')}" onclick="${isUnlocked?`startQuiz('${stage.id}')`:''}">
-        <div class="stage-icon">${stage.emoji}</div>
-        <div class="stage-info">
-          <h3>${stage.name}</h3>
-          <p>${stage.desc}</p>
-          <div class="stage-stats">
-            ${starDisplay?`<span class="stage-stars">${starDisplay}</span>`:''}
-            ${progress>0?`<span class="stage-progress">${progress}/${stage.maxQuestions} 완료</span>`:''}
-          </div>
-        </div>
-        ${isUnlocked?'':'<div class="stage-lock">🔒</div>'}
-      </div>`;
-    
-    map.innerHTML+=stageHtml;
-    if(i<STAGES.length-1){
-      map.innerHTML+=`<div class="stage-connector ${isUnlocked?'':'locked'}"></div>`;
-    }
-  });
-  
-  // Update stage unlock status
-  STAGES.forEach((stage,i)=>{
-    stage.unlocked=i===0||save.stageStars[STAGES[i-1].id]>0;
-  });
-}
-
-// ==================== QUIZ SYSTEM ====================
-function startQuiz(stageId){
-  save.lastStage=stageId;
-  const stageQuestions=QUESTIONS[stageId]||[];
-  if(!stageQuestions.length) return;
-  
-  quiz={
-    questions:shuffle([...stageQuestions]),
-    current:0,stars:0,score:0,newPersons:[],timer:null,timeLeft:15,
-    isExam:false,mode:'normal',combo:0,totalTime:0,stage:stageId
-  };
-  
-  showScreen('quiz-screen');
-  showQuestion();
-}
-
-function startExam(){
-  // Collect all unlocked questions
-  const allQuestions=[];
-  STAGES.forEach(stage=>{
-    if(stage.unlocked&&QUESTIONS[stage.id]){
-      allQuestions.push(...QUESTIONS[stage.id]);
-    }
-  });
-  
-  if(allQuestions.length<20) return alert('더 많은 스테이지를 클리어해주세요!');
-  
-  quiz={
-    questions:shuffle(allQuestions).slice(0,20),
-    current:0,stars:0,score:0,newPersons:[],timer:null,timeLeft:1200, // 20 minutes
-    isExam:true,mode:'exam',combo:0,totalTime:1200,stage:'exam'
-  };
-  
-  document.getElementById('quiz-screen').classList.add('exam-mode');
-  showScreen('quiz-screen');
-  showQuestion();
-}
-
-function showQuestion(){
-  if(quiz.current>=quiz.questions.length){
-    showResult();
-    return;
-  }
-  
-  const q=quiz.questions[quiz.current];
-  const total=quiz.questions.length;
-  
-  document.getElementById('quiz-progress').textContent=`${quiz.current+1} / ${total}`;
-  document.getElementById('progress-fill').style.width=(quiz.current/total*100)+'%';
-  document.getElementById('quiz-question').textContent=q.q;
-  
-  const types={'4choice':'4지선다','ox':'O/X 퀴즈','order':'순서맞추기','fill':'빈칸채우기'};
-  document.getElementById('quiz-type-badge').textContent=types[q.type]||'';
-  
-  const area=document.getElementById('quiz-options-area');
-  area.innerHTML='';
-  
-  if(q.type==='4choice') renderChoiceQ(q,area);
-  else if(q.type==='ox') renderOXQ(q,area);
-  else if(q.type==='order') renderOrderQ(q,area);
-  else if(q.type==='fill') renderFillQ(q,area);
-  
-  startTimer();
-}
-
-function startTimer(){
-  clearInterval(quiz.timer);
-  if(!quiz.isExam) quiz.timeLeft=15;
-  updateTimerDisplay();
-  
-  quiz.timer=setInterval(()=>{
-    quiz.timeLeft--;
-    updateTimerDisplay();
-    if(quiz.timeLeft<=0){
-      clearInterval(quiz.timer);
-      handleTimeout();
-    }
-  },1000);
-}
-
-function updateTimerDisplay(){
-  const el=document.getElementById('quiz-timer');
-  if(quiz.isExam){
-    const minutes=Math.floor(quiz.timeLeft/60);
-    const seconds=quiz.timeLeft%60;
-    el.innerHTML=`⏰ ${minutes}:${seconds.toString().padStart(2,'0')}`;
-    el.classList.toggle('exam-warning',quiz.timeLeft<=300); // 5 minutes warning
-  } else {
-    el.textContent='⏱ '+quiz.timeLeft;
-    el.classList.toggle('warning',quiz.timeLeft<=5);
-  }
-}
-
-function handleTimeout(){
-  playSound('timeout');
-  const q=quiz.questions[quiz.current];
-  processAnswer(false,q,0);
-}
-
-// ==================== QUESTION TYPES ====================
-function renderChoiceQ(q,area){
-  const labels=['①','②','③','④'];
-  let html='<div class="quiz-options">';
-  q.options.forEach((o,i)=>{
-    html+=`<button class="option-btn" id="opt-${i}" onclick="selectChoice(${i})">
-      <span class="option-label">${labels[i]}</span><span>${o}</span></button>`;
-  });
-  html+='</div>';
-  area.innerHTML=html;
-}
-
-function selectChoice(i){
-  clearInterval(quiz.timer);
-  const q=quiz.questions[quiz.current];
-  const correct=i===q.answer;
-  
-  document.querySelectorAll('.option-btn').forEach(b=>b.disabled=true);
-  document.getElementById('opt-'+q.answer).classList.add('correct');
-  if(!correct) document.getElementById('opt-'+i).classList.add('wrong');
-  
-  setTimeout(()=>processAnswer(correct,q,quiz.isExam?quiz.totalTime-quiz.timeLeft:quiz.timeLeft),800);
-}
-
-function renderOXQ(q,area){
-  area.innerHTML=`<div class="ox-options">
-    <button class="ox-btn" id="ox-o" onclick="selectOX(true)">⭕</button>
-    <button class="ox-btn" id="ox-x" onclick="selectOX(false)">❌</button>
-  </div>`;
-}
-
-function selectOX(val){
-  clearInterval(quiz.timer);
-  const q=quiz.questions[quiz.current];
-  const correct=val===q.answer;
-  
-  document.querySelectorAll('.ox-btn').forEach(b=>b.style.pointerEvents='none');
-  const correctId=q.answer?'ox-o':'ox-x';
-  document.getElementById(correctId).classList.add('correct');
-  if(!correct) document.getElementById(val?'ox-o':'ox-x').classList.add('wrong');
-  
-  setTimeout(()=>processAnswer(correct,q,quiz.isExam?quiz.totalTime-quiz.timeLeft:quiz.timeLeft),800);
-}
-
-function renderOrderQ(q,area){
-  const shuffled=shuffle([...q.items.map((t,i)=>({text:t,origIdx:i}))]);
-  area.innerHTML=`<div class="order-area">
-    <div class="order-hint">👆 순서대로 클릭해주세요!</div>
-    <div class="order-items" id="order-items">
-      ${shuffled.map((item,i)=>`<div class="order-item" data-orig="${item.origIdx}" data-idx="${i}" onclick="selectOrderItem(this)">
-        <span class="order-num">${i+1}</span><span>${item.text}</span>
-      </div>`).join('')}
-    </div>
-    <button class="btn btn-primary btn-sm order-submit" id="order-submit" onclick="submitOrder()" disabled>확인! ✅</button>
-  </div>`;
-  window._orderSelected=[];
-}
-
-function selectOrderItem(el){
-  if(el.classList.contains('selected-order')){
-    el.classList.remove('selected-order');
-    window._orderSelected=window._orderSelected.filter(e=>e!==el);
-  } else {
-    el.classList.add('selected-order');
-    window._orderSelected.push(el);
-  }
-  
-  // Update order numbers
-  document.querySelectorAll('.order-item .order-num').forEach((n,i)=>{
-    const item=n.parentElement;
-    if(item.classList.contains('selected-order')){
-      const pos=window._orderSelected.indexOf(item)+1;
-      n.textContent='🔢'+pos;
-    } else {
-      n.textContent=i+1;
-    }
-  });
-  
-  document.getElementById('order-submit').disabled=window._orderSelected.length!==document.querySelectorAll('.order-item').length;
-}
-
-function submitOrder(){
-  clearInterval(quiz.timer);
-  const q=quiz.questions[quiz.current];
-  const userOrder=window._orderSelected.map(el=>parseInt(el.dataset.orig));
-  const correct=JSON.stringify(userOrder)===JSON.stringify(q.correctOrder);
-  processAnswer(correct,q,quiz.isExam?quiz.totalTime-quiz.timeLeft:quiz.timeLeft);
-}
-
-function renderFillQ(q,area){
-  area.innerHTML=`<div class="fill-area">
-    <input type="text" class="fill-input" id="fill-input" placeholder="정답을 입력하세요" autocomplete="off">
-    <div class="fill-hint">💡 힌트: ${q.answer[0].length}글자</div>
-    <button class="btn btn-primary btn-sm" onclick="submitFill()">확인! ✅</button>
-  </div>`;
-  
-  document.getElementById('fill-input').addEventListener('keydown',e=>{
-    if(e.key==='Enter') submitFill();
-  });
-  document.getElementById('fill-input').focus();
-}
-
-function submitFill(){
-  clearInterval(quiz.timer);
-  const q=quiz.questions[quiz.current];
-  const val=document.getElementById('fill-input').value.trim();
-  const correct=q.answer.some(a=>val===a);
-  processAnswer(correct,q,quiz.isExam?quiz.totalTime-quiz.timeLeft:quiz.timeLeft);
-}
-
-// ==================== ANSWER PROCESSING ====================
-function processAnswer(correct,q,timeSpent){
-  let earnedStars=0;
-  
-  if(correct){
-    quiz.score++;
-    quiz.combo++;
-    playSound('correct');
-    
-    if(quiz.isExam){
-      earnedStars=1;
-    } else {
-      if(timeSpent>=10) earnedStars=3;
-      else if(timeSpent>=5) earnedStars=2;
-      else earnedStars=1;
-    }
-    
-    quiz.stars+=earnedStars;
-    setTimeout(()=>playSound('star'),200);
-    
-    // Show combo effect
-    if(quiz.combo>=3){
-      showCombo(quiz.combo);
-      createCelebrationEmoji('🔥');
-      playSound('combo');
-    }
-    
-    // Collect person
-    if(q.person&&!save.collected.includes(q.person)){
-      save.collected.push(q.person);
-      quiz.newPersons.push(q.person);
-    }
-  } else {
-    quiz.combo=0;
-    playSound('wrong');
-    
-    // Add to wrong notes
-    const existing=save.wrongNotes.find(w=>w.id===q.id);
-    if(!existing){
-      save.wrongNotes.push({
-        id:q.id,q:q.q,type:q.type,stage:quiz.stage,
-        correctAnswer:getCorrectAnswerText(q),
-        explain:q.explain
-      });
-    }
-  }
-  
-  saveSave();
-  showFeedback(correct,q,earnedStars);
-}
-
-function getCorrectAnswerText(q){
-  if(q.type==='4choice') return q.options[q.answer];
-  if(q.type==='ox') return q.answer?'O':'X';
-  if(q.type==='fill') return q.answer[0];
-  if(q.type==='order') return '올바른 순서대로';
-  return '';
-}
-
-function showFeedback(correct,q,stars){
-  const overlay=document.getElementById('feedback-overlay');
-  const card=document.getElementById('feedback-card');
-  const person=q.person?PERSONS[q.person]:null;
-  const isNew=quiz.newPersons.includes(q.person);
-  
-  // Create star effect if correct
-  if(correct){
-    createStarEffect();
-    if(stars===3) createCelebrationEmoji('🌟');
-  }
-  
-  let starsHtml='';
-  if(correct&&!quiz.isExam){
-    for(let i=0;i<3;i++){
-      starsHtml+=`<span style="animation-delay:${i*0.2}s">${i<stars?'⭐':'☆'}</span>`;
-    }
-  }
-  
-  card.innerHTML=`
-    <div class="feedback-emoji">${correct?'🎉':'😢'}</div>
-    <div class="feedback-title">${correct?'정답이에요!':'아쉬워요...'}</div>
-    <div class="feedback-desc">${q.explain}</div>
-    ${correct&&!quiz.isExam?`<div class="feedback-stars">${starsHtml}</div>`:''}
-    ${correct&&isNew&&person?`<div class="person-card-mini">🆕 ${person.emoji} <b>${person.name}</b> 수집!</div>`:''}
-    <button class="btn btn-sm ${correct?'btn-secondary':'btn-primary'}" onclick="closeFeedbackAndNext()">
-      ${quiz.current<quiz.questions.length-1?'다음 문제 →':'결과 보기 🏆'}
-    </button>`;
-  
-  overlay.style.display='flex';
-}
-
-function closeFeedbackAndNext(){
-  document.getElementById('feedback-overlay').style.display='none';
-  quiz.current++;
-  showQuestion();
-}
-
-// ==================== RESULTS ====================
-function showResult(){
-  clearInterval(quiz.timer);
-  document.getElementById('quiz-screen').classList.remove('exam-mode');
-  
-  const total=quiz.questions.length;
-  const pct=Math.round(quiz.score/total*100);
-  
-  // Calculate XP gain
-  let xpGain=quiz.score*10;
-  if(!quiz.isExam) xpGain+=quiz.stars*2;
-  
-  const oldLevel=save.level;
-  save.xp+=xpGain;
-  save.level=Math.max(1,Math.floor(save.xp/50)+1);
-  save.totalStars+=quiz.stars;
-  
-  if(!quiz.isExam){
-    // Update stage progress
-    save.stageStars[quiz.stage]=Math.max(save.stageStars[quiz.stage]||0,quiz.stars);
-    save.stageProgress[quiz.stage]=Math.max(save.stageProgress[quiz.stage]||0,quiz.score);
-  } else {
-    // Record exam result
-    const examResult={
-      score:quiz.score,
-      total:total,
-      percentage:pct,
-      date:new Date().toISOString().split('T')[0],
-      nickname:save.nickname||'익명'
-    };
-    save.examRecord.push(examResult);
-    updateRanking('exam',examResult);
-  }
-  
-  const leveledUp=save.level>oldLevel;
-  saveSave();
-  playSound('complete');
-  if(leveledUp) setTimeout(()=>playSound('levelup'),500);
-  
-  // Update UI
-  const resultHeader=quiz.isExam?'📝':'🎉';
-  const resultTitle=quiz.isExam?'모의시험 완료!':
-    pct>=70?`${STAGES.find(s=>s.id===quiz.stage)?.name} 클리어!`:'다시 도전해보자!';
-  
-  document.getElementById('result-header').textContent=resultHeader;
-  document.getElementById('result-title').textContent=resultTitle;
-  
-  // Level up banner
-  document.getElementById('level-up-area').innerHTML=leveledUp?
-    `<div class="level-up-banner">🆙 레벨 업! Lv.${save.level} ${getTitle(save.level)}</div>`:'';
-  
-  // Grade prediction for exam
-  let gradeArea='';
-  if(quiz.isExam){
-    let grade='더 공부가 필요해요 ✊';
-    if(pct>=90) grade='6급 합격 예상! 🏆';
-    else if(pct>=75) grade='7급 수준 💪';
-    else if(pct>=60) grade='8급 수준 📚';
-    gradeArea=`<div class="grade-prediction">${grade}</div>`;
-  }
-  document.getElementById('grade-area').innerHTML=gradeArea;
-  
-  // Stats
-  const statsHtml=quiz.isExam?`
-    <div class="result-stat"><div class="stat-value">${quiz.score}/${total}</div><div class="stat-label">정답</div></div>
-    <div class="result-stat"><div class="stat-value">${pct}%</div><div class="stat-label">정답률</div></div>
-    <div class="result-stat"><div class="stat-value">+${xpGain}</div><div class="stat-label">경험치</div></div>
-    <div class="result-stat"><div class="stat-value">Lv.${save.level}</div><div class="stat-label">레벨</div></div>`:`
-    <div class="result-stat"><div class="stat-value">${quiz.score}/${total}</div><div class="stat-label">정답</div></div>
-    <div class="result-stat"><div class="stat-value" style="color:var(--star)">⭐${quiz.stars}</div><div class="stat-label">별</div></div>
-    <div class="result-stat"><div class="stat-value">${pct}%</div><div class="stat-label">정답률</div></div>
-    <div class="result-stat"><div class="stat-value">+${xpGain}</div><div class="stat-label">경험치</div></div>`;
-  
-  document.getElementById('result-summary').innerHTML=statsHtml;
-  
-  // New persons
-  const cardsArea=document.getElementById('result-cards-area');
-  if(quiz.newPersons.length>0){
-    cardsArea.innerHTML='<p style="font-weight:700;margin:12px 0 8px;color:var(--primary)">🆕 새로 수집한 인물</p><div class="result-cards">'+
-      quiz.newPersons.map(pid=>{
-        const p=PERSONS[pid];
-        return`<div class="result-person"><div class="rp-emoji">${p.emoji}</div><div>${p.name}</div></div>`;
-      }).join('')+'</div>';
-  } else {
-    cardsArea.innerHTML='';
-  }
-  
-  // Buttons
-  const btnsArea=document.getElementById('result-btns');
-  if(quiz.isExam){
-    btnsArea.innerHTML=`
-      <button class="btn btn-primary" onclick="startExam()">🔄 다시 도전</button>
-      <button class="btn btn-secondary" onclick="showScreen('ranking-screen')">🏆 랭킹 보기</button>
-      <button class="btn btn-outline" onclick="showScreen('main-screen')">🏠 메인으로</button>`;
-  } else {
-    btnsArea.innerHTML=`
-      <button class="btn btn-primary" onclick="retryCurrentStage()">🔄 다시 도전</button>
-      <button class="btn btn-secondary" onclick="showScreen('stage-screen')">📍 다른 시대</button>
-      <button class="btn btn-outline" onclick="showScreen('main-screen')">🏠 메인으로</button>`;
-  }
-  
-  document.getElementById('progress-fill').style.width='100%';
-  showScreen('result-screen');
-}
-
-function retryCurrentStage(){
-  if(save.lastStage) startQuiz(save.lastStage);
-  else showScreen('stage-screen');
-}
-
-// ==================== COLLECTION ====================
-function renderCollection(){
-  const grid=document.getElementById('collection-grid');
-  const allKeys=Object.keys(PERSONS);
-  
-  document.getElementById('collection-count').textContent=`${save.collected.length} / ${allKeys.length} 수집`;
-  grid.innerHTML='';
-  
-  // Group by era
-  const eras=['고조선','선사시대','철기시대','위만조선','고구려','백제','신라','통일신라','발해','고려','조선','조선 후기','실학','개화기','일제강점기','현대'];
-  
-  allKeys.forEach(key=>{
-    const p=PERSONS[key];
-    const has=save.collected.includes(key);
-    
-    grid.innerHTML+=`<div class="person-card ${has?'':'locked'}" onclick="${has?`showPersonDetail('${key}')`:''}">
-      <div class="pc-emoji">${has?p.emoji:'❓'}</div>
-      <div class="pc-name">${has?p.name:'???'}</div>
-      ${has?`<div class="pc-desc">${p.desc}</div><div class="pc-era">${p.era}</div>`:`<div class="pc-desc">???</div>`}
-    </div>`;
-  });
-}
-
-function showPersonDetail(key){
-  const p=PERSONS[key];
-  const overlay=document.getElementById('person-detail-overlay');
-  
-  document.getElementById('person-detail-content').innerHTML=`
-    <div class="pd-emoji">${p.emoji}</div>
-    <div class="pd-name">${p.name}</div>
-    <div class="pc-era" style="margin:8px auto;display:inline-block">${p.era}</div>
-    <div class="pd-info" style="margin-top:12px">${p.detail}</div>`;
-  
-  overlay.style.display='flex';
-}
-
-function hidePersonDetail(){
-  document.getElementById('person-detail-overlay').style.display='none';
-}
-
-// ==================== RANKINGS ====================
-function updateRanking(type,record){
-  if(!save.nickname) return;
-  
-  const ranking=save.rankings[type];
-  const existingIndex=ranking.findIndex(r=>r.nickname===save.nickname);
-  
-  if(existingIndex>=0){
-    if(type==='exam'&&record.score>ranking[existingIndex].score){
-      ranking[existingIndex]=record;
-    }
-  } else {
-    ranking.push(record);
-  }
-  
-  // Sort and limit
-  ranking.sort((a,b)=>b.score-a.score);
-  save.rankings[type]=ranking.slice(0,10);
-}
-
-function saveNickname(){
-  const input=document.getElementById('nickname-input');
-  const nickname=input.value.trim();
-  if(!nickname) return;
-  
-  save.nickname=nickname;
-  saveSave();
-  
-  // Update total ranking
-  updateRanking('total',{
-    nickname:nickname,
-    level:save.level,
-    totalStars:getTotalStars(),
-    progress:getTotalProgress(),
-    date:new Date().toISOString().split('T')[0]
-  });
-  
-  input.value='';
-  renderRankings();
-}
-
-function showRanking(type){
-  document.querySelectorAll('.ranking-tab').forEach(t=>t.classList.remove('active'));
-  event.target.classList.add('active');
-  
-  const list=document.getElementById('ranking-list');
-  const rankings=save.rankings[type]||[];
-  
-  if(rankings.length===0){
-    list.innerHTML='<div class="empty-state"><span class="empty-emoji">🏆</span>아직 랭킹이 없어요!<br>첫 번째가 되어보세요!</div>';
-    return;
-  }
-  
-  list.innerHTML=rankings.map((record,i)=>{
-    let rankClass='normal';
-    if(i===0) rankClass='gold';
-    else if(i===1) rankClass='silver';  
-    else if(i===2) rankClass='bronze';
-    
-    let scoreText='';
-    if(type==='total') scoreText=`Lv.${record.level} • ⭐${record.totalStars}`;
-    else if(type==='exam') scoreText=`${record.score}점 (${record.percentage}%)`;
-    else scoreText=`${record.score}점`;
-    
-    return`<div class="ranking-item">
-      <div class="ranking-rank ${rankClass}">${i+1}</div>
-      <div class="ranking-info">
-        <div class="ranking-name">${record.nickname}</div>
-        <div class="ranking-score">${scoreText}</div>
-      </div>
-    </div>`;
-  }).join('');
-}
-
-function renderRankings(){
-  const input=document.getElementById('nickname-input');
-  if(save.nickname) input.placeholder=`현재: ${save.nickname}`;
-  showRanking('total');
-}
-
-// ==================== WRONG NOTES ====================
-function renderWrongNotes(){
-  const list=document.getElementById('wrong-list');
-  const retryBtn=document.getElementById('retry-wrong-btn');
-  const clearBtn=document.getElementById('clear-wrong-btn');
-  
-  if(save.wrongNotes.length===0){
-    list.innerHTML='<div class="empty-state"><span class="empty-emoji">🎉</span>틀린 문제가 없어요!<br>완벽해요!</div>';
-    retryBtn.style.display='none';
-    clearBtn.style.display='none';
-    return;
-  }
-  
-  retryBtn.style.display='';
-  clearBtn.style.display='';
-  
-  list.innerHTML=save.wrongNotes.map(w=>`
-    <div class="wrong-item">
-      <div class="wq">${w.q}</div>
-      <div class="wc">✅ 정답: ${w.correctAnswer}</div>
-      <div class="we">💡 ${w.explain}</div>
-      <div style="font-size:.7rem;color:#b2bec3;margin-top:4px">${STAGES.find(s=>s.id===w.stage)?.name||'알 수 없음'}</div>
-    </div>`).join('');
-}
-
-function retryWrongQuestions(){
-  const wrongIds=save.wrongNotes.map(w=>w.id);
-  const allQuestions=[];
-  
-  Object.values(QUESTIONS).forEach(stageQuestions=>{
-    stageQuestions.forEach(q=>{
-      if(wrongIds.includes(q.id)) allQuestions.push(q);
-    });
-  });
-  
-  if(allQuestions.length===0) return;
-  
-  quiz={
-    questions:shuffle(allQuestions),
-    current:0,stars:0,score:0,newPersons:[],timer:null,timeLeft:15,
-    isExam:false,mode:'retry',combo:0,totalTime:0,stage:'retry'
-  };
-  
-  showScreen('quiz-screen');
-  showQuestion();
-}
-
-function clearWrongNotes(){
-  if(!confirm('오답 노트를 비울까요?')) return;
-  save.wrongNotes=[];
-  saveSave();
-  renderWrongNotes();
-}
-
-// ==================== UTILITY FUNCTIONS ====================
-function resetGame(){
-  if(!confirm('모든 진행상황을 초기화할까요?')) return;
-  localStorage.removeItem('kh_save_v2');
-  localStorage.removeItem('kh_save'); // Remove old version too
-  location.reload();
-}
-
-// ==================== INITIALIZATION ====================
-document.addEventListener('DOMContentLoaded',()=>{
-  updateMainScreen();
-  
-  // Unlock first stage if needed
-  if(!STAGES[0].unlocked){
-    STAGES[0].unlocked=true;
-    saveSave();
-  }
-  
-  console.log('한국사 타임어드벤처 2.0 로드 완료! 🎮');
-});
-</script>
-</body>
-</html>
