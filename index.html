@@ -272,13 +272,13 @@ h2{font-size:1.4rem;text-align:center;margin-bottom:12px}
   </div>
   <div class="card" style="text-align:center">
     <h3 style="margin-bottom:16px">🎯 실전 모의시험</h3>
-    <p style="color:#636e72;margin-bottom:20px">전 시대 문제 20개 • 20분 시간제한<br>한국사능력검정시험 6급 수준</p>
+    <p style="color:#636e72;margin-bottom:20px">전 시대 문제 20개 • 20분 시간제한<br>한국사능력검정시험 기본(4·5·6급) 수준</p>
     <div style="background:#f8f9fa;padding:16px;border-radius:12px;margin-bottom:20px">
       <div style="font-size:.9rem;color:#636e72;margin-bottom:8px">예상 결과</div>
       <div style="font-size:.8rem;line-height:1.4">
-        18-20점: 6급 합격 예상! 🏆<br>
-        15-17점: 7급 수준 💪<br>
-        12-14점: 8급 수준 📚<br>
+        18-20점: 기본 4급 수준! 🏆<br>
+        15-17점: 기본 5급 수준 💪<br>
+        12-14점: 기본 6급 수준 📚<br>
         0-11점: 더 공부가 필요해요 ✊
       </div>
     </div>
@@ -1446,9 +1446,9 @@ function showResult(){
   let gradeArea='';
   if(quiz.isExam){
     let grade='더 공부가 필요해요 ✊';
-    if(pct>=90) grade='6급 합격 예상! 🏆';
-    else if(pct>=75) grade='7급 수준 💪';
-    else if(pct>=60) grade='8급 수준 📚';
+    if(pct>=90) grade='기본 4급 수준! 🏆';
+    else if(pct>=75) grade='기본 5급 수준 💪';
+    else if(pct>=60) grade='기본 6급 수준 📚';
     gradeArea=`<div class="grade-prediction">${grade}</div>`;
   }
   document.getElementById('grade-area').innerHTML=gradeArea;
