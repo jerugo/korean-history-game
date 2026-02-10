@@ -373,7 +373,7 @@ h2{font-size:1.4rem;text-align:center;margin-bottom:12px}
 </div>
 
 <button class="reset-btn" onclick="resetGame()">초기화</button>
-<div style="text-align:center;padding:8px;font-size:0.75rem;color:#B2BEC3;margin-top:4px">v2.1 · 175문제</div>
+<div style="text-align:center;padding:8px;font-size:0.75rem;color:#B2BEC3;margin-top:4px">v2.2 · 245문제</div>
 
 <script>
 // ==================== ENHANCED DATA ====================
@@ -449,13 +449,13 @@ const PERSONS = {
 };
 
 const STAGES = [
-  {id:'prehistoric',name:'선사시대 & 고조선',emoji:'🗿',desc:'구석기부터 고조선까지',unlocked:true,maxQuestions:25,persons:['gojoseon_king','dolmen_builder','iron_master','wiman','biryu','ungnyeo','gija']},
-  {id:'samguk',name:'삼국시대',emoji:'⚔️',desc:'고구려·백제·신라의 경쟁',unlocked:false,maxQuestions:25,persons:['jumong','gwanggaeto','jangsu','onjo','geunchogo','eulji_mundeok','park_hyeokgeose','kim_suro']},
-  {id:'unified',name:'남북국시대',emoji:'🌅',desc:'통일신라와 발해',unlocked:false,maxQuestions:25,persons:['munmu','wonhyo','uisang','dae_joyeong','jang_bogo','seondeok','jindeok','dae_inseon']},
-  {id:'goryeo',name:'고려시대',emoji:'🏰',desc:'고려의 건국과 발전',unlocked:false,maxQuestions:25,persons:['wang_geon','sejong_goryeo','seo_hui','gang_gam_chan','choi_chung_heon','jung_jung_bu','yun_gwan','gung_ye']},
-  {id:'joseon_early',name:'조선 전기',emoji:'📜',desc:'조선 건국과 문화융성',unlocked:false,maxQuestions:25,persons:['yi_seong_gye','sejong','jang_yeong_sil','yi_hwang','yi_i','jeong_do_jeon','yi_bang_won','heo_jun']},
-  {id:'joseon_late',name:'조선 후기 & 개화기',emoji:'🌸',desc:'실학과 개화운동',unlocked:false,maxQuestions:25,persons:['sejong_late','park_ji_won','hong_dae_yong','jeong_yag_yong','kim_ok_gyun','gim_jeong_ho','yu_hyeong_won','heungseon']},
-  {id:'modern',name:'일제강점기 & 현대',emoji:'🇰🇷',desc:'독립운동과 현대사',unlocked:false,maxQuestions:25,persons:['an_jung_geun','yu_gwan_sun','kim_gu','syngman_rhee','park_chung_hee','yun_bong_gil','lee_bong_chang','ahn_chang_ho']}
+  {id:'prehistoric',name:'선사시대 & 고조선',emoji:'🗿',desc:'구석기부터 고조선까지',unlocked:true,maxQuestions:35,persons:['gojoseon_king','dolmen_builder','iron_master','wiman','biryu','ungnyeo','gija']},
+  {id:'samguk',name:'삼국시대',emoji:'⚔️',desc:'고구려·백제·신라의 경쟁',unlocked:false,maxQuestions:35,persons:['jumong','gwanggaeto','jangsu','onjo','geunchogo','eulji_mundeok','park_hyeokgeose','kim_suro']},
+  {id:'unified',name:'남북국시대',emoji:'🌅',desc:'통일신라와 발해',unlocked:false,maxQuestions:35,persons:['munmu','wonhyo','uisang','dae_joyeong','jang_bogo','seondeok','jindeok','dae_inseon']},
+  {id:'goryeo',name:'고려시대',emoji:'🏰',desc:'고려의 건국과 발전',unlocked:false,maxQuestions:35,persons:['wang_geon','sejong_goryeo','seo_hui','gang_gam_chan','choi_chung_heon','jung_jung_bu','yun_gwan','gung_ye']},
+  {id:'joseon_early',name:'조선 전기',emoji:'📜',desc:'조선 건국과 문화융성',unlocked:false,maxQuestions:35,persons:['yi_seong_gye','sejong','jang_yeong_sil','yi_hwang','yi_i','jeong_do_jeon','yi_bang_won','heo_jun']},
+  {id:'joseon_late',name:'조선 후기 & 개화기',emoji:'🌸',desc:'실학과 개화운동',unlocked:false,maxQuestions:35,persons:['sejong_late','park_ji_won','hong_dae_yong','jeong_yag_yong','kim_ok_gyun','gim_jeong_ho','yu_hyeong_won','heungseon']},
+  {id:'modern',name:'일제강점기 & 현대',emoji:'🇰🇷',desc:'독립운동과 현대사',unlocked:false,maxQuestions:35,persons:['an_jung_geun','yu_gwan_sun','kim_gu','syngman_rhee','park_chung_hee','yun_bong_gil','lee_bong_chang','ahn_chang_ho']}
 ];
 
 const QUESTIONS = {
@@ -484,7 +484,17 @@ const QUESTIONS = {
     {id:22,type:'4choice',q:'고인돌이 가장 많이 남아있는 곳은?',options:['강화도','제주도','울릉도','독도'],answer:0,person:'dolmen_builder',explain:'강화도에는 120여 개의 고인돌이 있어 세계문화유산으로 지정되었어요!'},
     {id:23,type:'fill',q:'청동기 시대의 대표적인 농기구는 ○○○이에요.',answer:['반달돌칼','반달칼'],person:'dolmen_builder',explain:'반달돌칼은 벼이삭을 자르는 데 사용한 청동기 시대 농기구예요!'},
     {id:24,type:'ox',q:'구석기 시대 사람들은 불을 사용할 줄 몰랐다.',answer:false,person:'iron_master',explain:'구석기 시대 사람들도 불을 사용할 줄 알았어요. 동굴 벽화도 그려서 남겼답니다!'},
-    {id:25,type:'4choice',q:'고조선의 마지막 왕은?',options:['단군왕검','기자','위만','준왕'],answer:3,person:'wiman',explain:'준왕은 위만에게 왕위를 빼앗긴 고조선의 마지막 왕이에요!'}
+    {id:25,type:'4choice',q:'고조선의 마지막 왕은?',options:['단군왕검','기자','위만','준왕'],answer:3,person:'wiman',explain:'준왕은 위만에게 왕위를 빼앗긴 고조선의 마지막 왕이에요!'},
+    {id:26,type:'4choice',q:'다음 중 신석기 시대의 특징으로 옳은 것은? [기출]',options:['철기 사용','농업 시작','청동기 제작','성곽 건설'],answer:1,person:'dolmen_builder',explain:'신석기 시대에는 농업이 시작되면서 정착 생활이 시작되었어요!'},
+    {id:27,type:'4choice',q:'고조선에 대한 설명으로 옳은 것은? [기출]',options:['철기 문화를 바탕으로 성장','신석기 시대에 건국','중국의 속국이었음','불교를 국교로 삼음'],answer:0,person:'gojoseon_king',explain:'고조선은 철기 문화를 바탕으로 발전한 우리나라 최초의 국가예요!'},
+    {id:28,type:'4choice',q:'다음 중 청동기 시대의 대표적인 무덤은? [기출]',options:['움집','고인돌','온돌','기와집'],answer:1,person:'dolmen_builder',explain:'고인돌은 청동기 시대 지배층의 거대한 돌무덤이에요!'},
+    {id:29,type:'4choice',q:'고조선의 8조법에 대한 설명으로 옳은 것은? [기출]',options:['살인하면 사형','도둑질하면 5배 배상','상해를 입히면 곡식으로 배상','모두 맞음'],answer:3,person:'gojoseon_king',explain:'8조법은 살인(사형), 절도(12배 배상), 상해(곡식 배상) 등을 규정했어요!'},
+    {id:30,type:'4choice',q:'다음 중 구석기 시대 사람들의 생활 모습은? [기출]',options:['농사를 지었다','토기를 만들었다','동굴에서 살았다','철기를 사용했다'],answer:2,person:'iron_master',explain:'구석기 시대 사람들은 동굴이나 바위 그늘에서 살며 사냥과 채집을 했어요!'},
+    {id:31,type:'4choice',q:'철기 시대에 사용된 화폐는? [기출]',options:['동전','지폐','덩이쇠','조개껍데기'],answer:2,person:'iron_master',explain:'철기 시대에는 일정한 모양의 덩이쇠가 화폐로 사용되었어요!'},
+    {id:32,type:'4choice',q:'단군 신화에서 웅녀가 먹은 것은? [기출]',options:['쑥과 마늘','쌀과 콩','고기와 생선','과일과 견과'],answer:0,person:'ungnyeo',explain:'웅녀는 100일 동안 쑥과 마늘만 먹고 사람이 되어 단군의 어머니가 되었어요!'},
+    {id:33,type:'4choice',q:'고조선이 중국과 남쪽 나라들 사이에서 한 일은? [기출]',options:['전쟁만 했다','중계무역을 했다','문화만 교류했다','관계를 단절했다'],answer:1,person:'wiman',explain:'고조선은 중국과 남쪽 여러 나라 사이의 중계무역으로 번영했어요!'},
+    {id:34,type:'4choice',q:'다음 중 선사 시대의 순서로 옳은 것은? [기출]',options:['신석기→구석기→청동기→철기','구석기→신석기→철기→청동기','구석기→신석기→청동기→철기','신석기→구석기→철기→청동기'],answer:2,person:'dolmen_builder',explain:'구석기 → 신석기 → 청동기 → 철기 순서로 시대가 발전했어요!'},
+    {id:35,type:'4choice',q:'청동기 시대 농기구로 옳은 것은? [기출]',options:['쟁기','반달돌칼','낫','호미'],answer:1,person:'dolmen_builder',explain:'반달돌칼은 청동기 시대에 벼이삭을 자르는 데 사용한 농기구예요!'}
   ],
   samguk: [
     {id:1,type:'4choice',q:'고구려를 세운 사람은 누구일까요? 🏹',options:['주몽','온조','혁거세','김수로'],answer:0,person:'jumong',explain:'주몽은 부여에서 내려와 고구려를 세웠어요. 활을 잘 쏴서 "주몽"이라는 이름이 붙었답니다!'},
@@ -511,7 +521,17 @@ const QUESTIONS = {
     {id:22,type:'4choice',q:'신라 진덕여왕 다음에 즉위한 왕은?',options:['문무왕','태종무열왕','선덕여왕','진평왕'],answer:1,person:'jindeok',explain:'진덕여왕 다음에는 태종무열왕이 즉위했어요!'},
     {id:23,type:'ox',q:'고구려는 중국과 한 번도 전쟁을 하지 않았다.',answer:false,person:'gwanggaeto',explain:'고구려는 수나라, 당나라와 여러 차례 큰 전쟁을 벌였어요!'},
     {id:24,type:'4choice',q:'삼국 중 가장 먼저 멸망한 나라는?',options:['고구려','백제','신라','가야'],answer:3,person:'kim_suro',explain:'가야는 562년에 신라에게 멸망해서 삼국보다 먼저 사라졌어요!'},
-    {id:25,type:'fill',q:'고구려 광개토대왕의 아들은 ○○왕이에요.',answer:['장수'],person:'jangsu',explain:'장수왕은 광개토대왕의 아들로 79년이나 왕위에 있었어요!'}
+    {id:25,type:'fill',q:'고구려 광개토대왕의 아들은 ○○왕이에요.',answer:['장수'],person:'jangsu',explain:'장수왕은 광개토대왕의 아들로 79년이나 왕위에 있었어요!'},
+    {id:26,type:'4choice',q:'삼국 중 가장 먼저 건국된 나라는? [기출]',options:['고구려','백제','신라','가야'],answer:0,person:'jumong',explain:'고구려는 기원전 37년에 건국되어 삼국 중 가장 먼저 세워졌어요!'},
+    {id:27,type:'4choice',q:'고구려의 수도 변천 순서로 옳은 것은? [기출]',options:['졸본→국내성→평양','평양→국내성→졸본','국내성→평양→졸본','졸본→평양→국내성'],answer:0,person:'jangsu',explain:'고구려는 졸본 → 국내성 → 평양 순서로 수도를 옮겼어요!'},
+    {id:28,type:'4choice',q:'백제 근초고왕 때의 업적이 아닌 것은? [기출]',options:['마한 통합','일본에 문화 전파','고구려 고국원왕 전사','신라와 화친'],answer:3,person:'geunchogo',explain:'근초고왕은 신라와 대립했고, 고구려와도 전쟁을 벌여 고국원왕을 전사시켰어요!'},
+    {id:29,type:'4choice',q:'신라의 골품제에서 최고 신분은? [기출]',options:['1두품','6두품','진골','성골'],answer:3,person:'seondeok',explain:'성골은 왕족만 될 수 있는 신라 골품제의 최고 신분이었어요!'},
+    {id:30,type:'4choice',q:'을지문덕이 활약한 전투는? [기출]',options:['살수대첩','연개소문의 난','고구려 유민의 봉기','정유재란'],answer:0,person:'eulji_mundeok',explain:'을지문덕은 살수대첩에서 수나라 군대를 크게 물리친 명장이에요!'},
+    {id:31,type:'4choice',q:'가야에 대한 설명으로 옳은 것은? [기출]',options:['고구려에서 분리되었다','불교를 일찍 받아들였다','철 생산이 발달했다','신라보다 먼저 건국되었다'],answer:2,person:'kim_suro',explain:'가야는 철의 생산과 가공 기술이 발달하여 중국과 일본에 철을 수출했어요!'},
+    {id:32,type:'4choice',q:'신라 첨성대의 건립 목적은? [기출]',options:['적의 침입 감시','천체 관측','종교 의식','곡식 저장'],answer:1,person:'seondeok',explain:'첨성대는 별자리를 관측하여 농사철을 알아보는 천문 관측대예요!'},
+    {id:33,type:'4choice',q:'고구려 연개소문에 대한 설명으로 옳은 것은? [기출]',options:['광개토대왕의 신하','영류왕을 죽이고 정권 장악','백제를 멸망시킴','신라에 투항함'],answer:1,person:'eulji_mundeok',explain:'연개소문은 영류왕을 죽이고 보장왕을 세워 고구려의 실권을 장악했어요!'},
+    {id:34,type:'4choice',q:'백제의 수도 변천 과정으로 옳은 것은? [기출]',options:['위례성→웅진→사비','사비→웅진→위례성','웅진→위례성→사비','위례성→사비→웅진'],answer:0,person:'onjo',explain:'백제는 위례성(서울) → 웅진(공주) → 사비(부여) 순서로 수도를 옮겼어요!'},
+    {id:35,type:'4choice',q:'삼국 통일 과정에서 신라가 마지막으로 축출한 세력은? [기출]',options:['백제','고구려','가야','당나라'],answer:3,person:'munmu',explain:'신라는 백제와 고구려를 멸망시킨 후 당나라 세력까지 축출하여 삼국통일을 완성했어요!'}
   ],
   unified: [
     {id:1,type:'4choice',q:'삼국통일을 완성한 신라의 왕은?',options:['무열왕','문무왕','신문왕','진평왕'],answer:1,person:'munmu',explain:'문무왕이 백제와 고구려를 멸망시키고 당나라까지 축출하여 삼국통일을 완성했어요!'},
@@ -538,7 +558,17 @@ const QUESTIONS = {
     {id:22,type:'4choice',q:'석굴암 본존불상의 특징은?',options:['서 있는 모습','앉아 있는 모습','누워 있는 모습','걷고 있는 모습'],answer:1,person:'munmu',explain:'석굴암 본존불은 항마촉지인을 한 앉아 있는 석가여래상이에요!'},
     {id:23,type:'fill',q:'신라에서 ○품 이상이어야 자주색 옷을 입을 수 있었어요.',answer:['4','사'],person:'seondeok',explain:'골품제에서 4두품 이상이 되어야 자주색 관복을 입을 수 있었어요!'},
     {id:24,type:'ox',q:'발해에서는 유교, 불교, 도교를 모두 받아들였다.',answer:true,person:'dae_joyeong',explain:'발해는 유교, 불교, 도교를 고루 받아들인 개방적인 문화를 가지고 있었어요!'},
-    {id:25,type:'4choice',q:'신라 말기 선종 불교를 도입한 대표적 인물은?',options:['원효','의상','도의','자장'],answer:2,person:'wonhyo',explain:'도의는 당나라에서 선종을 배워와 신라에 전파한 인물이에요!'}
+    {id:25,type:'4choice',q:'신라 말기 선종 불교를 도입한 대표적 인물은?',options:['원효','의상','도의','자장'],answer:2,person:'wonhyo',explain:'도의는 당나라에서 선종을 배워와 신라에 전파한 인물이에요!'},
+    {id:26,type:'4choice',q:'발해의 건국자는? [기출]',options:['대조영','대무예','대인수','검모잠'],answer:0,person:'dae_joyeong',explain:'대조영이 고구려 유민과 말갈족을 이끌고 발해를 건국했어요!'},
+    {id:27,type:'4choice',q:'통일신라가 통치한 지역은? [기출]',options:['한반도 전체','대동강 이남','압록강 이남','한강 이남'],answer:1,person:'munmu',explain:'통일신라는 대동강과 원산만 이남을 통치했고, 이북 지역은 발해가 차지했어요!'},
+    {id:28,type:'4choice',q:'원효대사의 활동으로 옳은 것은? [기출]',options:['불교를 대중화했다','왕실 불교만 강조했다','유교를 도입했다','도교를 전파했다'],answer:0,person:'wonhyo',explain:'원효대사는 어려운 불교를 일반 백성도 이해하기 쉽게 대중화했어요!'},
+    {id:29,type:'4choice',q:'발해가 "해동성국"이라 불린 시기는? [기출]',options:['건국 초기','대조영 때','선왕 때','멸망 직전'],answer:2,person:'dae_inseon',explain:'선왕(대인수) 때 발해가 전성기를 맞아 "해동성국"이라 불렸어요!'},
+    {id:30,type:'4choice',q:'장보고가 설치한 것은? [기출]',options:['청해진','금산사','석굴암','불국사'],answer:0,person:'jang_bogo',explain:'장보고는 완도에 청해진을 설치하여 해상무역을 장악했어요!'},
+    {id:31,type:'4choice',q:'통일신라 골품제의 특징은? [기출]',options:['신분 이동이 자유롭다','출생에 따라 신분이 결정된다','능력에 따라 관직이 정해진다','외국인도 관직에 오를 수 있다'],answer:1,person:'seondeok',explain:'골품제는 출생에 따라 신분이 고정되는 엄격한 신분제였어요!'},
+    {id:32,type:'4choice',q:'석굴암 본존불의 명칭은? [기출]',options:['석가여래좌상','아미타여래좌상','미륵보살상','관음보살상'],answer:0,person:'munmu',explain:'석굴암의 본존불은 석가여래좌상으로 항마촉지인을 하고 있어요!'},
+    {id:33,type:'4choice',q:'발해 멸망의 원인은? [기출]',options:['신라의 침입','당나라의 침입','거란(요)의 침입','몽골의 침입'],answer:2,person:'dae_joyeong',explain:'발해는 926년 거란(요)에 의해 멸망했어요!'},
+    {id:34,type:'4choice',q:'9서당에 대한 설명으로 옳은 것은? [기출]',options:['지방군 조직','중앙군 조직','관리 양성 기관','불교 종파'],answer:1,person:'munmu',explain:'9서당은 통일신라의 중앙군 조직으로 왕경을 지켰어요!'},
+    {id:35,type:'4choice',q:'신라 하대 6두품 출신 인물은? [기출]',options:['김춘추','최치원','김유신','원효'],answer:1,person:'seondeok',explain:'최치원은 6두품 출신으로 당나라에서 과거에 급제한 대표적 인물이에요!'}
   ],
   goryeo: [
     {id:1,type:'4choice',q:'고려를 건국한 사람은?',options:['궁예','견훤','왕건','기준'],answer:2,person:'wang_geon',explain:'왕건이 후삼국을 통일하고 고려를 건국했어요!'},
@@ -565,7 +595,17 @@ const QUESTIONS = {
     {id:22,type:'4choice',q:'고려의 화폐는?',options:['통보','건원중보','동국통보','해동통보'],answer:2,person:'sejong_goryeo',explain:'고려에서는 동국통보, 해동통보 등의 화폐를 사용했어요!'},
     {id:23,type:'ox',q:'고려시대에는 문벌 귀족이 지배층이었다.',answer:true,person:'sejong_goryeo',explain:'고려시대에는 문벌 귀족들이 정치를 독점했어요!'},
     {id:24,type:'4choice',q:'고려사를 편찬한 인물은?',options:['김부식','일연','이규보','최충'],answer:0,person:'wang_geon',explain:'김부식은 삼국사기를 편찬해서 우리나라 최초의 정사를 완성했어요!'},
-    {id:25,type:'fill',q:'고려 말 신진사대부의 대표 인물은 ○○○이에요.',answer:['정도전'],person:'wang_geon',explain:'정도전은 신진사대부의 대표로 조선 건국에 큰 역할을 했어요!'}
+    {id:25,type:'fill',q:'고려 말 신진사대부의 대표 인물은 ○○○이에요.',answer:['정도전'],person:'wang_geon',explain:'정도전은 신진사대부의 대표로 조선 건국에 큰 역할을 했어요!'},
+    {id:26,type:'4choice',q:'고려를 건국한 왕건의 정책은? [기출]',options:['사대정책','북진정책','문벌 귀족 중시','호족 세력 포용'],answer:3,person:'wang_geon',explain:'왕건은 호족 세력을 포용하는 정책으로 후삼국을 통일했어요!'},
+    {id:27,type:'4choice',q:'거란 1차 침입 때 외교담판을 벌인 인물은? [기출]',options:['서희','강감찬','윤관','김부식'],answer:0,person:'seo_hui',explain:'서희가 소손녕과 외교담판을 벌여 강동 6주를 얻어냈어요!'},
+    {id:28,type:'4choice',q:'고려 광종의 정책으로 옳은 것은? [기출]',options:['과거제 도입','무신정변','몽골 침입 방어','팔만대장경 제작'],answer:0,person:'sejong_goryeo',explain:'광종은 과거제를 도입하여 신진 세력을 등용하고 왕권을 강화했어요!'},
+    {id:29,type:'4choice',q:'귀주대첩이 일어난 시기는? [기출]',options:['993년','1010년','1018년','1270년'],answer:2,person:'gang_gam_chan',explain:'1018년 강감찬이 귀주대첩에서 거란 3차 침입을 물리쳤어요!'},
+    {id:30,type:'4choice',q:'무신정변을 일으킨 대표 인물은? [기출]',options:['정중부','최충헌','경대승','이의방'],answer:0,person:'jung_jung_bu',explain:'정중부가 1170년 무신정변을 일으켜 문신 정권을 무너뜨렸어요!'},
+    {id:31,type:'4choice',q:'팔만대장경이 제작된 목적은? [기출]',options:['학문 발전','대외 선전','몽골 침입 극복','불교 교리 연구'],answer:2,person:'wang_geon',explain:'팔만대장경은 몽골 침입을 부처의 힘으로 막기 위해 제작되었어요!'},
+    {id:32,type:'4choice',q:'별무반을 조직한 인물은? [기출]',options:['서희','강감찬','윤관','최영'],answer:2,person:'yun_gwan',explain:'윤관이 별무반을 조직하여 여진족을 물리치고 동북 9성을 쌓았어요!'},
+    {id:33,type:'4choice',q:'고려의 대외 관계에서 사대의 대상은? [기출]',options:['거란','몽골','중국(송)','일본'],answer:2,person:'wang_geon',explain:'고려는 중국의 송나라에 대해서는 사대 관계를 맺었어요!'},
+    {id:34,type:'4choice',q:'고려청자의 독창적인 기법은? [기출]',options:['상감기법','청화기법','백자기법','철화기법'],answer:0,person:'wang_geon',explain:'고려청자의 상감기법은 고려에서 독창적으로 개발한 도자기 기술이에요!'},
+    {id:35,type:'4choice',q:'공민왕의 개혁 정치 내용은? [기출]',options:['원의 내정간섭 배제','몽골과의 화친','문벌 귀족 중시','무신정권 수립'],answer:0,person:'wang_geon',explain:'공민왕은 원의 내정간섭을 배제하고 개혁정치를 시도했어요!'}
   ],
   joseon_early: [
     {id:1,type:'4choice',q:'조선을 건국한 사람은?',options:['정도전','하륜','이성계','조준'],answer:2,person:'yi_seong_gye',explain:'이성계가 위화도 회군 후 조선을 건국했어요!'},
@@ -592,7 +632,17 @@ const QUESTIONS = {
     {id:22,type:'4choice',q:'조선 전기 지방 행정구역은?',options:['5도','8도','10도','12도'],answer:1,person:'yi_seong_gye',explain:'조선은 전국을 8도로 나누어 다스렸어요!'},
     {id:23,type:'ox',q:'훈민정음 창제에는 집현전 학자들이 참여했다.',answer:true,person:'sejong',explain:'세종은 집현전 학자들과 함께 훈민정음을 연구하고 만들었어요!'},
     {id:24,type:'4choice',q:'조선 초기 왜구를 토벌한 장군은?',options:['이성계','최영','이종무','정도전'],answer:2,person:'yi_seong_gye',explain:'이종무는 대마도를 정벌해서 왜구의 근거지를 소탕했어요!'},
-    {id:25,type:'fill',q:'조선 세종 때 설치한 최고 교육기관은 ○○○이에요.',answer:['성균관'],person:'sejong',explain:'성균관은 조선시대 최고 교육기관으로 유교 경전을 가르쳤어요!'}
+    {id:25,type:'fill',q:'조선 세종 때 설치한 최고 교육기관은 ○○○이에요.',answer:['성균관'],person:'sejong',explain:'성균관은 조선시대 최고 교육기관으로 유교 경전을 가르쳤어요!'},
+    {id:26,type:'4choice',q:'조선 건국에 핵심 역할을 한 인물은? [기출]',options:['정도전','하륜','조준','권근'],answer:0,person:'jeong_do_jeon',explain:'정도전은 조선 건국의 설계자로 불리며 핵심적인 역할을 했어요!'},
+    {id:27,type:'4choice',q:'훈민정음 창제의 목적은? [기출]',options:['중국과의 교류','양반 교육 강화','백성의 문자 생활 편의','일본과의 차별화'],answer:2,person:'sejong',explain:'세종대왕은 백성들이 쉽게 배워 쓸 수 있는 문자로 훈민정음을 만들었어요!'},
+    {id:28,type:'4choice',q:'조선의 국가 이념은? [기출]',options:['불교','유교','도교','기독교'],answer:1,person:'yi_seong_gye',explain:'조선은 성리학을 바탕으로 한 유교를 국가 이념으로 삼았어요!'},
+    {id:29,type:'4choice',q:'장영실이 만든 것이 아닌 것은? [기출]',options:['앙부일구','자격루','측우기','거중기'],answer:3,person:'jang_yeong_sil',explain:'거중기는 정약용이 만든 것이고, 장영실은 해시계, 물시계, 측우기를 만들었어요!'},
+    {id:30,type:'4choice',q:'조선 전기 지방 행정구역은? [기출]',options:['5도','8도','13도','23부'],answer:1,person:'yi_seong_gye',explain:'조선은 전국을 8도로 나누어 지방을 다스렸어요!'},
+    {id:31,type:'4choice',q:'세종 때 편찬한 지리서는? [기출]',options:['동국여지승람','신증동국여지승람','세종실록지리지','택리지'],answer:2,person:'sejong',explain:'세종실록지리지는 세종 때 편찬된 대표적인 지리서예요!'},
+    {id:32,type:'4choice',q:'조선의 의정부서사제 특징은? [기출]',options:['의정부가 모든 일을 결정','6조가 독립적으로 업무 처리','왕이 직접 모든 일을 처리','지방에서 중앙 업무 담당'],answer:0,person:'yi_seong_gye',explain:'의정부서사제에서는 의정부가 국정의 모든 일을 총괄했어요!'},
+    {id:33,type:'4choice',q:'동의보감의 저자는? [기출]',options:['허준','이제마','유의태','전순의'],answer:0,person:'heo_jun',explain:'허준이 동의보감을 써서 우리나라 전통 의학을 집대성했어요!'},
+    {id:34,type:'4choice',q:'조선 전기 문화의 특징은? [기출]',options:['불교 문화 융성','도교 사상 발달','실용 문화 발달','개방적 문화 정책'],answer:2,person:'sejong',explain:'조선 전기에는 과학 기술과 실용 문화가 크게 발달했어요!'},
+    {id:35,type:'4choice',q:'계유정난의 주인공은? [기출]',options:['태조 이성계','태종 이방원','세조 이유','성종 이혈'],answer:2,person:'yi_bang_won',explain:'세조(수양대군)가 계유정난을 일으켜 단종을 폐위시키고 왕위에 올랐어요!'}
   ],
   joseon_late: [
     {id:1,type:'4choice',q:'규장각을 설치한 조선 후기 왕은?',options:['영조','정조','순조','헌종'],answer:1,person:'sejong_late',explain:'정조가 규장각을 설치하고 문예부흥을 이끌었어요!'},
@@ -619,7 +669,17 @@ const QUESTIONS = {
     {id:22,type:'4choice',q:'강화도조약을 맺은 해는?',options:['1875년','1876년','1877년','1878년'],answer:1,person:'kim_ok_gyun',explain:'1876년에 일본과 강화도조약을 맺어 조선이 개항했어요!'},
     {id:23,type:'ox',q:'실학자들은 모두 양반 출신이었다.',answer:false,person:'jeong_yag_yong',explain:'실학자 중에는 중인이나 서얼 출신도 많았어요!'},
     {id:24,type:'4choice',q:'조선 후기 상품화폐로 사용된 것은?',options:['동전','은화','상평통보','무명'],answer:2,person:'park_ji_won',explain:'상평통보는 조선 후기 주요 화폐로 사용되었어요!'},
-    {id:25,type:'fill',q:'정조가 설치한 왕실 도서관은 ○○○이에요.',answer:['규장각'],person:'sejong_late',explain:'규장각은 정조가 설치한 왕실 도서관이자 학술 연구 기관이었어요!'}
+    {id:25,type:'fill',q:'정조가 설치한 왕실 도서관은 ○○○이에요.',answer:['규장각'],person:'sejong_late',explain:'규장각은 정조가 설치한 왕실 도서관이자 학술 연구 기관이었어요!'},
+    {id:26,type:'4choice',q:'정약용의 저서가 아닌 것은? [기출]',options:['목민심서','경세유표','흠흠신서','의산문답'],answer:3,person:'jeong_yag_yong',explain:'의산문답은 홍대용의 저서이고, 나머지는 모두 정약용의 작품이에요!'},
+    {id:27,type:'4choice',q:'흥선대원군의 정책으로 옳은 것은? [기출]',options:['개항정책','쇄국정책','개화정책','친일정책'],answer:1,person:'heungseon',explain:'흥선대원군은 서양 세력을 막는 쇄국정책을 펼쳤어요!'},
+    {id:28,type:'4choice',q:'갑신정변의 주도 세력은? [기출]',options:['개화파','위정척사파','동학농민군','의병'],answer:0,person:'kim_ok_gyun',explain:'김옥균을 중심으로 한 급진개화파가 갑신정변을 일으켰어요!'},
+    {id:29,type:'4choice',q:'대동여지도를 만든 인물은? [기출]',options:['김정호','이중환','정상기','이익'],answer:0,person:'gim_jeong_ho',explain:'김정호가 22년간 전국을 답사하여 정밀한 대동여지도를 완성했어요!'},
+    {id:30,type:'4choice',q:'실학 사상의 특징은? [기출]',options:['현실 개혁 의지','복고주의 사상','외국 배척','신분제 옹호'],answer:0,person:'jeong_yag_yong',explain:'실학은 조선 사회의 모순을 극복하려는 현실 개혁 의지에서 나왔어요!'},
+    {id:31,type:'4choice',q:'수원 화성을 축조한 왕은? [기출]',options:['영조','정조','순조','헌종'],answer:1,person:'sejong_late',explain:'정조가 아버지 사도세자를 기리며 수원 화성을 축조했어요!'},
+    {id:32,type:'4choice',q:'조선 후기 상품화폐경제의 특징은? [기출]',options:['물물교환 중심','상평통보 사용','외국화폐 사용','조세만 현물'],answer:1,person:'sejong_late',explain:'조선 후기에는 상평통보라는 동전이 전국적으로 유통되었어요!'},
+    {id:33,type:'4choice',q:'위정척사 운동의 주장은? [기출]',options:['서양 문물 수용','일본과 제휴','전통 사상 고수','무력 개화'],answer:2,person:'heungseon',explain:'위정척사파는 성리학적 전통을 지키고 서양 문물을 배척했어요!'},
+    {id:34,type:'4choice',q:'강화도 조약의 성격은? [기출]',options:['평등 조약','불평등 조약','군사 동맹','경제 협정'],answer:1,person:'kim_ok_gyun',explain:'강화도 조약은 치외법권과 관세 자주권 포기 등이 포함된 불평등 조약이었어요!'},
+    {id:35,type:'4choice',q:'동학 농민 운동의 지도자는? [기출]',options:['최제우','최시형','전봉준','손병희'],answer:2,person:'kim_ok_gyun',explain:'전봉준이 동학 농민 운동을 지도하여 갑오농민운동을 일으켰어요!'}
   ],
   modern: [
     {id:1,type:'4choice',q:'이토 히로부미를 처단한 의사는?',options:['안중근','윤봉길','이봉창','김상옥'],answer:0,person:'an_jung_geun',explain:'안중근 의사가 하얼빈에서 이토 히로부미를 저격했어요!'},
@@ -646,7 +706,17 @@ const QUESTIONS = {
     {id:22,type:'4choice',q:'3.1운동이 일어난 해는?',options:['1918년','1919년','1920년','1921년'],answer:1,person:'yu_gwan_sun',explain:'1919년 3월 1일에 독립 만세 운동이 전국적으로 일어났어요!'},
     {id:23,type:'ox',q:'김구는 교육을 통한 독립운동을 주장했다.',answer:false,person:'kim_gu',explain:'김구는 무력투쟁을 통한 독립운동을 주장했어요. 교육론은 안창호였어요!'},
     {id:24,type:'4choice',q:'일제강점기 토지조사사업의 목적은?',options:['농민 보호','근대적 토지소유권 확립','농업 발전','교육 진흥'],answer:1,person:'an_jung_geun',explain:'토지조사사업은 근대적 토지소유권을 확립한다는 명목으로 토지를 수탈했어요!'},
-    {id:25,type:'fill',q:'2002년 한일 월드컵의 한국 최종 성적은 ○위였어요.',answer:['4','사'],person:'park_chung_hee',explain:'2002년 한일 월드컵에서 한국은 4위를 기록해 전 국민을 열광시켰어요!'}
+    {id:25,type:'fill',q:'2002년 한일 월드컵의 한국 최종 성적은 ○위였어요.',answer:['4','사'],person:'park_chung_hee',explain:'2002년 한일 월드컵에서 한국은 4위를 기록해 전 국민을 열광시켰어요!'},
+    {id:26,type:'4choice',q:'한일강제병합이 이루어진 해는? [기출]',options:['1905년','1910년','1919년','1945년'],answer:1,person:'an_jung_geun',explain:'1910년 한일강제병합으로 조선이 일본의 식민지가 되었어요!'},
+    {id:27,type:'4choice',q:'3.1운동이 일어난 해는? [기출]',options:['1918년','1919년','1920년','1921년'],answer:1,person:'yu_gwan_sun',explain:'1919년 3월 1일에 독립 만세 운동이 전국적으로 일어났어요!'},
+    {id:28,type:'4choice',q:'대한민국 임시정부가 수립된 곳은? [기출]',options:['상하이','하와이','미국','만주'],answer:0,person:'kim_gu',explain:'1919년 상하이에서 대한민국 임시정부가 수립되었어요!'},
+    {id:29,type:'4choice',q:'윤봉길 의사의 의거 장소는? [기출]',options:['하얼빈역','상하이 홍커우 공원','명동성당','도쿄 궁성'],answer:1,person:'yun_bong_gil',explain:'윤봉길 의사는 상하이 홍커우 공원에서 의거를 일으켰어요!'},
+    {id:30,type:'4choice',q:'광복 후 최초의 민주 정부가 수립된 해는? [기출]',options:['1945년','1946년','1947년','1948년'],answer:3,person:'syngman_rhee',explain:'1948년 8월 15일 대한민국 정부가 수립되었어요!'},
+    {id:31,type:'4choice',q:'6.25전쟁이 일어난 해는? [기출]',options:['1949년','1950년','1951년','1952년'],answer:1,person:'syngman_rhee',explain:'1950년 6월 25일 북한이 남침하면서 6.25전쟁이 시작되었어요!'},
+    {id:32,type:'4choice',q:'4.19혁명의 원인이 된 선거는? [기출]',options:['제1대 대통령 선거','제2대 대통령 선거','제3대 대통령 선거','제4대 부통령 선거'],answer:3,person:'syngman_rhee',explain:'1960년 제4대 부통령 선거의 부정이 4.19혁명의 직접적 원인이었어요!'},
+    {id:33,type:'4choice',q:'한국 광복군의 창설자는? [기출]',options:['김구','안창호','이승만','신채호'],answer:0,person:'kim_gu',explain:'김구가 중국 충칭에서 한국 광복군을 창설했어요!'},
+    {id:34,type:'4choice',q:'일제강점기 토지조사사업의 결과는? [기출]',options:['농민의 토지 소유권 확대','일본인의 토지 수탈','농업 기술 발달','농민 소득 증가'],answer:1,person:'an_jung_geun',explain:'토지조사사업으로 많은 농민이 토지를 잃고 일본인이 대량의 토지를 차지했어요!'},
+    {id:35,type:'4choice',q:'1987년 6월 민주항쟁의 결과는? [기출]',options:['군사정권 연장','대통령 직선제 실현','계엄령 선포','국회 해산'],answer:1,person:'park_chung_hee',explain:'6월 민주항쟁으로 대통령 직선제가 실현되어 민주화가 이루어졌어요!'}
   ]
 };
 
