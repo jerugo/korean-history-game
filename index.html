@@ -7,6 +7,19 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--primary:#FF6B6B;--secondary:#4ECDC4;--accent:#FFE66D;--bg:#FFF8F0;--card:#FFFFFF;--text:#2D3436;--correct:#00B894;--wrong:#E17055;--star:#FDCB6E;--lock:#B2BEC3;--shadow:0 4px 15px rgba(0,0,0,0.1);--gradient:linear-gradient(135deg,#667eea 0%,#764ba2 100%)}
+[data-theme="dark"]{--bg:#1a1a2e;--card:#16213e;--text:#e0e0e0;--lock:#636e72;--shadow:0 4px 15px rgba(0,0,0,0.4)}
+[data-theme="dark"] .btn-outline{background:var(--card);color:var(--text);border-color:#2d3a5e}
+[data-theme="dark"] .stage-card{border-color:#2d3a5e}
+[data-theme="dark"] .quiz-option{background:var(--card);color:var(--text);border-color:#2d3a5e}
+[data-theme="dark"] .quiz-option:hover{border-color:#667eea}
+[data-theme="dark"] .ox-btn{background:var(--card);color:var(--text);border-color:#2d3a5e}
+[data-theme="dark"] .fill-input{background:var(--card);color:var(--text);border-color:#2d3a5e}
+[data-theme="dark"] .order-item{background:var(--card);color:var(--text);border-color:#2d3a5e}
+[data-theme="dark"] .ranking-tab{background:var(--card);color:var(--text)}
+[data-theme="dark"] .collection-card{background:var(--card);border-color:#2d3a5e}
+[data-theme="dark"] .wrong-item{background:var(--card);border-color:#2d3a5e}
+.dark-toggle{position:fixed;top:12px;right:12px;z-index:999;background:var(--card);border:2px solid #dfe6e9;border-radius:50%;width:44px;height:44px;font-size:1.3rem;cursor:pointer;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;transition:all .3s}
+.dark-toggle:active{transform:scale(.9)}
 
 @font-face{font-family:'emoji';src:local('Apple Color Emoji'),local('Segoe UI Emoji'),local('Noto Color Emoji')}
 body{font-family:-apple-system,BlinkMacSystemFont,'Malgun Gothic','맑은 고딕',sans-serif;background:var(--bg);color:var(--text);min-height:100dvh;overflow-x:hidden}
@@ -227,6 +240,8 @@ h2{font-size:1.4rem;text-align:center;margin-bottom:12px}
 </head>
 <body>
 
+<button class="dark-toggle" onclick="toggleDark()" id="dark-toggle" title="다크모드">🌙</button>
+
 <!-- MAIN SCREEN -->
 <div id="main-screen" class="screen active">
   <div class="main-character">🧙‍♂️</div>
@@ -378,6 +393,18 @@ h2{font-size:1.4rem;text-align:center;margin-bottom:12px}
 <div style="text-align:center;padding:8px;font-size:0.75rem;color:#B2BEC3;margin-top:4px">v2.3 · 350문제</div>
 
 <script>
+// ==================== DARK MODE ====================
+function toggleDark(){
+  const isDark=document.documentElement.getAttribute('data-theme')==='dark';
+  document.documentElement.setAttribute('data-theme',isDark?'light':'dark');
+  document.getElementById('dark-toggle').textContent=isDark?'🌙':'☀️';
+  localStorage.setItem('kh_theme',isDark?'light':'dark');
+}
+(function(){
+  const t=localStorage.getItem('kh_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+  if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');document.addEventListener('DOMContentLoaded',()=>{document.getElementById('dark-toggle').textContent='☀️'});}
+})();
+
 // ==================== ENHANCED DATA ====================
 const PERSONS = {
   // 선사시대 & 고조선
