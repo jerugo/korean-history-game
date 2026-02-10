@@ -287,6 +287,7 @@ h2{font-size:1.4rem;text-align:center;margin-bottom:12px}
 <!-- QUIZ SCREEN -->
 <div id="quiz-screen" class="screen">
   <div class="quiz-header">
+    <button class="btn btn-sm btn-outline" onclick="quitQuiz()" style="padding:6px 10px;font-size:0.8rem">🏠</button>
     <span class="quiz-progress" id="quiz-progress">1 / 12</span>
     <span class="quiz-timer" id="quiz-timer">⏱ 15</span>
   </div>
@@ -1316,6 +1317,13 @@ function showResult(){
   
   document.getElementById('progress-fill').style.width='100%';
   showScreen('result-screen');
+}
+
+function quitQuiz(){
+  if(!confirm('퀴즈를 그만둘까요?')) return;
+  clearInterval(quiz.timer);
+  document.getElementById('quiz-screen').classList.remove('exam-mode');
+  showScreen('main-screen');
 }
 
 function retryCurrentStage(){
